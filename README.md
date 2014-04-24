@@ -6,15 +6,9 @@ MSS "Movie Script Scrapper" - A simple scrapper to retrieve scripts by genre fro
 Usage
 ===
 
-1. Choose a genre Ex.
+1. Enter a genre (otherwise defaults to Action):
 
-        request('http://www.imsdb.com/feeds/genre.php?genre=Comedy',...
-2. Update output files path
-
-        fs.writeFile('scripts/comedy/' + title + '.txt', script, function (err) {...
-3. Run
-
-        $ node app
+        $ node app --genre Comedy
 
 Note: Be sure to install required modules with
 

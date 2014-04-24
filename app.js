@@ -4,11 +4,47 @@
 var _ = require('lodash'),
   S = require('string'),
   fs = require('fs'),
+  mkdirp = require('mkdirp'),
   request = require('request'),
   cheerio = require('cheerio');
 
+// Process command line arguments
+var argv = require('minimist')(process.argv.slice(2));
+
+// List of valid genres
+var genres = [
+  'Action',
+  'Adventure',
+  'Animation',
+  'Comedy',
+  'Crime',
+  'Drama',
+  'Family',
+  'Fantasy',
+  'Film-Noir',
+  'Horror',
+  'Musical',
+  'Mystery',
+  'Romance',
+  'Sci-Fi',
+  'Short',
+  'Thriller',
+  'War',
+  'Western'
+  ];
+
+// Set default genre
+var genre = 'Action';
+// Check if it's a valid genre
+if (!argv.genre) console.log('Getting scripts for movies of ' + genre);
+else if (!_.contains(genres, argv.genre)) return console.log('Sorry, invalid genre.');
+else {
+  genre = argv.genre;
+  console.log('Getting scripts for movies of ' + genre);
+}
+
 // Get list of script URLs
-request('http://www.imsdb.com/feeds/genre.php?genre=Comedy', {rejectUnauthorized: false}, function (error, response, html) {
+request('http://www.imsdb.com/feeds/genre.php?genre=' + genre, {rejectUnauthorized: false}, function (error, response, html) {
   if (error || response.statusCode !== 200) {
     console.log(error);
     return;
@@ -52,8 +88,18 @@ function saveScript (scriptURL) {
     // Return if no script (probably TV episode, slightly different URL)
     if (script.length < 1) return;
 
+    // Create directory if it doesn't exist
+    fs.exists('scripts/' + genre + '/', function (exists) {
+      if (!exists) {
+
+         mkdirp('scripts/' + genre + '/', function (err) {
+          if (err) console.log('Failed to make directory');
+         });
+      }
+    });
+
     // Write to file
-    fs.writeFile('scripts/Comedy/' + title + '.txt', script, function (err) {
+    fs.writeFile('scripts/' + genre + '/' + title + '.txt', script, function (err) {
       if (err) console.log(err);
       else console.log('Saved ' + title);
     });
