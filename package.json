@@ -1,0 +1,26 @@
+{
+  "name": "mss",
+  "description": "Simple movie scripts scrapper.",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Timothy Kendall",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timkendall/mss.git"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "scripts": {
+    "start": "node node_modules/grunt-cli/bin/grunt",
+    "test": "node node_modules/grunt-cli/bin/grunt test"
+  },
+  "dependencies": {
+    "cheerio": "latest",
+    "lodash": "latest",
+    "request": "latest",
+    "string": "^1.8.1"
+  },
+  "devDependencies": {}
+}
