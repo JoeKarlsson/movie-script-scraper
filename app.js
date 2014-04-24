@@ -59,10 +59,14 @@ request('http://www.imsdb.com/feeds/genre.php?genre=' + genre, {rejectUnauthoriz
   // Remove invalid script URLs
   var cleaned = _.remove(urls, function (url) { return S(url).contains('.html'); });
 
-  cleaned.forEach(function (url, index, array) {
-    console.log(url);
-    // Call for every script URL
-    saveScript(url);
+  // Create directory if doesn't exist
+  checkDirectory(function () {
+    // Loop through script URLs
+    cleaned.forEach(function (url, index, array) {
+      console.log(url);
+      // Call for every script URL
+      saveScript(url);
+    });
   });
 
 });
@@ -88,15 +92,7 @@ function saveScript (scriptURL) {
     // Return if no script (probably TV episode, slightly different URL)
     if (script.length < 1) return;
 
-    // Create directory if it doesn't exist
-    fs.exists('scripts/' + genre + '/', function (exists) {
-      if (!exists) {
 
-         mkdirp('scripts/' + genre + '/', function (err) {
-          if (err) console.log('Failed to make directory');
-         });
-      }
-    });
 
     // Write to file
     fs.writeFile('scripts/' + genre + '/' + title + '.txt', script, function (err) {
@@ -105,4 +101,20 @@ function saveScript (scriptURL) {
     });
   });
 }
+
+function checkDirectory (callback) {
+  // Create directory if it doesn't exist
+  fs.exists('scripts/' + genre + '/', function (exists) {
+    if (!exists) {
+
+      mkdirp('scripts/' + genre + '/', function (err) {
+        if (err) return console.log('Failed to make directory for ' + genre);
+        // Execute callback
+        callback();
+      });
+    }
+    // Execute callback
+    callback();
+  });
+};
 
