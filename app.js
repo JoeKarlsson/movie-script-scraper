@@ -92,8 +92,6 @@ function saveScript (scriptURL) {
     // Return if no script (probably TV episode, slightly different URL)
     if (script.length < 1) return;
 
-
-
     // Write to file
     fs.writeFile('scripts/' + genre + '/' + title + '.txt', script, function (err) {
       if (err) console.log(err);
