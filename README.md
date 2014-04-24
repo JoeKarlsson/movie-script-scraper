@@ -7,13 +7,17 @@ Usage
 ===
 
 1. Choose a genre Ex.
+
         request('http://www.imsdb.com/feeds/genre.php?genre=Comedy',...
 2. Update output files path
+
         fs.writeFile('scripts/comedy/' + title + '.txt', script, function (err) {...
 3. Run
+
         $ node app
 
 Note: Be sure to install required modules with
+
         $ npm install
 
 How it Works

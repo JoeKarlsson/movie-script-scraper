@@ -13,8 +13,6 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "start": "node node_modules/grunt-cli/bin/grunt",
-    "test": "node node_modules/grunt-cli/bin/grunt test"
   },
   "dependencies": {
     "cheerio": "latest",
