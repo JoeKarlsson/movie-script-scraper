@@ -33,14 +33,28 @@ var genres = [
   'Western'
   ];
 
-// Set default genre
+// Set default genre and total number of scripts 
 var genre = 'Action';
-// Check if it's a valid genre
-if (!argv.genre) console.log('Getting scripts for movies of ' + genre);
+var total = 0;
+//Counter to stop when total is reached
+var totalCounter = 0;
+
+// Check if it's a valid genre and if a total number of scripts was given
+if (!argv.genre && !argv.total) console.log('Getting all the scripts for movies of ' + genre);
+else if(!argv.genre && argv.total){
+  total = argv.total;
+  console.log('Getting ' + total + ' random scripts for movies of ' + genre);
+}
 else if (!_.contains(genres, argv.genre)) return console.log('Sorry, invalid genre.');
 else {
   genre = argv.genre;
-  console.log('Getting scripts for movies of ' + genre);
+  if(argv.total){
+    total = argv.total;
+    console.log('Getting ' + total + ' random scripts for movies of ' + genre);
+  }else{
+    console.log('Getting all scripts for movies of ' + genre);
+  }
+
 }
 
 // Get list of script URLs
@@ -72,6 +86,12 @@ request('http://www.imsdb.com/feeds/genre.php?genre=' + genre, {rejectUnauthoriz
 });
 
 function saveScript (scriptURL) {
+  //Randomly choosing if script shall be saved  
+  if (total != 0){
+      if(totalCounter == total) return;
+      var totalRandomNumber = Math.floor((Math.random()*100)+1);
+      if(totalRandomNumber % 3 != 0) return; // Don't save 
+  }
   // Request the script page
   request(scriptURL, {rejectUnauthorized: false}, function (error, response, html) {
     // Handle error
@@ -92,12 +112,18 @@ function saveScript (scriptURL) {
     // Return if no script (probably TV episode, slightly different URL)
     if (script.length < 1) return;
 
+   
+    
+
     // Write to file
     fs.writeFile('scripts/' + genre + '/' + title + '.txt', script, function (err) {
       if (err) console.log(err);
       else console.log('Saved ' + title);
     });
+    //Increment total counter
+    
   });
+  if(total != 0) ++totalCounter;
 }
 
 function checkDirectory (callback) {

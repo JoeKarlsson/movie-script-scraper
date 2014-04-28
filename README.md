@@ -4,11 +4,11 @@ MSS
 MSS "Movie Script Scrapper" - A simple scrapper to retrieve scripts by genre from IMSDB.
 
 Usage
-===
+====
 
-Enter a genre (otherwise defaults to Action):
+Enter a genre (defaults to Action) or a total (defaults to all scripts from resource):
 
-        $ node app --genre Comedy
+        $ node app --total 10 --genre Comedy
 
 Note: Be sure to install required modules with
 
