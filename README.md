@@ -4,7 +4,7 @@ MSS
 MSS "Movie Script Scrapper" - A simple scrapper to retrieve scripts by genre from IMSDB.
 
 Usage
-===
+====
 
 Enter a genre (defaults to Action) or a total (defaults to all scripts from resource):
 
