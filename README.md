@@ -6,7 +6,7 @@ MSS "Movie Script Scrapper" - A simple scrapper to retrieve scripts by genre fro
 Usage
 ===
 
-Enter a genre (otherwise defaults to Action) or a total (defaults to all scripts from resource):
+Enter a genre (defaults to Action) or a total (defaults to all scripts from resource):
 
         $ node app --total 10 --genre Comedy
 
