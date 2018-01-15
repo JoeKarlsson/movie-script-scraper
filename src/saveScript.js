@@ -36,7 +36,7 @@ const saveScript = (scriptURL, genre, total) => {
 			.slugify().s;
 
 		// Return if no script (probably TV episode, slightly different URL)
-		if (script.length < 1) return;
+		if (script.length < 500) return;
 
 		// Write to file
 		fs.writeFile(`scripts/${genre}/'${title}.txt`, script, err => {

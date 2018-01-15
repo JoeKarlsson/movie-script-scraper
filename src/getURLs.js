@@ -40,7 +40,6 @@ const getURLs = (genre, total) => {
 			return null;
 		}
 		addScriptsToDir(urls, genre, total);
-		return urls;
 	});
 };
 
