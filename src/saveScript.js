@@ -34,12 +34,13 @@ const saveScript = (scriptURL, genre, total) => {
 		const title = string($('title').text())
 			.chompRight(' Script at IMSDb.')
 			.slugify().s;
+		console.log('title', title);
 
 		// Return if no script (probably TV episode, slightly different URL)
 		if (script.length < 500) return;
 
 		// Write to file
-		fs.writeFile(`scripts/${genre}/'${title}.txt`, script, err => {
+		fs.writeFile(`scripts/${genre}/${title}.txt`, script, err => {
 			if (err) console.log(err);
 			else console.log(`Saved ${title}`);
 		});
