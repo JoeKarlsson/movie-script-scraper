@@ -31,9 +31,15 @@ const saveScript = (scriptURL, genre, total) => {
 		// script = S(script).collapseWhitespace();
 		script = script.replace('Search IMSDb', '');
 		// Get a clean title
-		const title = string($('title').text())
+		let title = string($('title').text())
 			.chompRight(' Script at IMSDb.')
+			// .strip(' Script at IMSDb.')
 			.slugify().s;
+
+		const idx = title.indexOf('script-at-imsdb');
+		if (idx > 0) {
+			title = title.substring(0, idx - 1);
+		}
 		console.log('title', title);
 
 		// Return if no script (probably TV episode, slightly different URL)
