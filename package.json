@@ -8,7 +8,7 @@
     "url": "https://github.com/joekarlsson/mss.git"
   },
   "scripts": {
-    "start": "node src/app --total 10 --genre Action",
+    "start": "node src/app",
     "lint": "eslint src"
   },
   "dependencies": {
