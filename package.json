@@ -7,10 +7,6 @@
     "type": "git",
     "url": "https://github.com/joekarlsson/mss.git"
   },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
-  },
   "scripts": {
     "start": "node src/app --total 10 --genre Action",
     "lint": "eslint src"

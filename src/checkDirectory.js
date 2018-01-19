@@ -5,7 +5,6 @@ const stat = util.promisify(fs.stat);
 const mkdirp = require('mkdirp');
 
 const checkDirectory = (genre, callback) => {
-	console.log('genre', genre);
 	// Create directory if it doesn't exist
 	stat(`scripts/${genre}/`)
 		.then(() => {
