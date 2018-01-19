@@ -47,7 +47,7 @@ $ npm start --total 10 --genre Comedy
 or enter a title:
 
 ```bash
-    		$ npm start --title 'american sniper'
+$ npm start --title 'american sniper'
 ```
 
 Note: Be sure to install required modules with
