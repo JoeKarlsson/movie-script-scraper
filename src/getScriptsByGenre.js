@@ -3,6 +3,7 @@ const string = require('string');
 const api = require('./api');
 const getScript = require('./getScript');
 const checkDirectory = require('./checkDirectory');
+const handleError = require('./helper/handleError');
 
 const randomNum = () => {
 	return Math.floor(Math.random() * 100 + 1);
@@ -47,11 +48,45 @@ const handleURLs = html => {
 	return urls;
 };
 
-const getScriptsByGenre = async (genre, total) => {
-	const url = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
-	const rawURLs = await api(url);
-	const urls = handleURLs(rawURLs);
-	return addScriptsToDir(urls, genre, total);
+const isValidGenre = genre => {
+	// List of valid genres
+	const genres = [
+		'Action',
+		'Adventure',
+		'Animation',
+		'Comedy',
+		'Crime',
+		'Drama',
+		'Family',
+		'Fantasy',
+		'Film-Noir',
+		'Horror',
+		'Musical',
+		'Mystery',
+		'Romance',
+		'Sci-Fi',
+		'Short',
+		'Thriller',
+		'War',
+		'Western',
+	];
+
+	const isValid = _.indexOf(genres, genre) > -1;
+	return isValid;
+};
+
+const getScriptsByGenre = async (genre = 'Action', total = 10) => {
+	if (isValidGenre(genre)) {
+		try {
+			const url = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
+			const rawURLs = await api(url);
+			const urls = handleURLs(rawURLs);
+			return addScriptsToDir(urls, genre, total);
+		} catch (err) {
+			handleError(err);
+		}
+	}
+	handleError('Invalid Genre');
 };
 
 module.exports = getScriptsByGenre;

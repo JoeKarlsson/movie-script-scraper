@@ -12,7 +12,7 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "start": "node src/app --total 10",
+    "start": "node src/app --total 10 --genre Action",
     "lint": "eslint src"
   },
   "dependencies": {
@@ -22,7 +22,7 @@
     "lodash": "latest",
     "minimist": "0.0.8",
     "mkdirp": "^0.4.0",
-    "string": "^1.8.1"
+    "string": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^4.15.0",

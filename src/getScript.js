@@ -2,7 +2,7 @@ const string = require('string');
 const fs = require('fs');
 const cheerio = require('cheerio');
 const api = require('./api');
-const handleError = require('./handleError');
+const handleError = require('./helper/handleError');
 
 const writeToFile = (path, script, title) => {
 	fs.writeFile(path, script, err => {
@@ -40,7 +40,9 @@ const extractPageContents = html => {
 
 const getScript = async (scriptURL, genre = null) => {
 	try {
+		console.log('scriptURL', scriptURL);
 		const rawScriptData = await api(scriptURL);
+		// console.log('rawScriptData', rawScriptData);
 		const { script, title } = extractPageContents(rawScriptData);
 
 		// Return if no script (probably TV episode, slightly different URL)
