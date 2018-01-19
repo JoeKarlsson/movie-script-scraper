@@ -5,7 +5,7 @@
 [![license][license]][license-url]
 [![twitter][twitter]][twitter-url]
 
-MSS "Movie Script Scrapper" - A simple scrapper to retrieve scripts by genre from IMSDB.
+A simple scrapper to retrieve scripts by genre from IMSDB.
 
 # Installation
 
