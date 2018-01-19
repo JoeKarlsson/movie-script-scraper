@@ -51,13 +51,13 @@ mss(options)
 You can run MSS directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g mss`) with variety of useful options.
 
 ```bash
-$ npm start --total 10 --genre Comedy
+$ mss --total 10 --genre Comedy
 ```
 
 or enter a title:
 
 ```bash
-$ npm start --title 'american sniper'
+$ mss --title 'american sniper'
 ```
 
 # How it Works
