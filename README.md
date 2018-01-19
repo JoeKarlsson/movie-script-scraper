@@ -7,7 +7,17 @@
 
 MSS "Movie Script Scrapper" - A simple scrapper to retrieve scripts by genre from IMSDB.
 
-# Methods
+# Installation
+
+```bash
+$ npm install -S mss
+```
+
+# Usage
+
+## Example Usage
+
+**MSS** exposes a function; simply pass this function the options (see below), and it will return a promise with the file paths of the scripts it saved.
 
 ```javascript
 var mss = require('mss');
@@ -26,7 +36,7 @@ mss(options)
 	});
 ```
 
-#### Options
+### Options
 
 * `genre` [__string__] - Any valid film genre, a complete list can be found [here](https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/src/helper/isValidGenre.js).
   * Defaults to "Action".
@@ -36,9 +46,9 @@ mss(options)
 * _TODO_ - `scriptDir` [string] - Location that you want to save your scripts.
   * Defaults to ./scripts
 
-# Command Line Usage
+## Running from command line
 
-Enter a genre (defaults to Action) or a total (defaults to 10 scripts):
+You can run MSS directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g mss`) with variety of useful options.
 
 ```bash
 $ npm start --total 10 --genre Comedy
@@ -50,15 +60,23 @@ or enter a title:
 $ npm start --title 'american sniper'
 ```
 
-Note: Be sure to install required modules with
-
-```bash
-$ npm install
-```
-
 # How it Works
 
 Conveniently IMSDB provides RSS feeds based on movie genre (ex. <http://www.imsdb.com/feeds/genre.php?genre=Comedy>). Using the awesome fetch module we are then able to grab that page and use a regular expression to generate an array of movie script URLs. We then visit each URL with Fetch and use another awesome module called Cheerio to select just the movie script from each page and finally output each script to a file.
+
+## Running Locally
+
+1. Install dependencies with:
+
+```bash
+$ npm install -S mss
+```
+
+1. Run Tests
+
+```bash
+$ npm test
+```
 
 ## Contributing
 
