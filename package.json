@@ -2,7 +2,7 @@
   "name": "mss",
   "description": "Simple movie scripts scrapper.",
   "version": "0.0.1",
-  "author": "Joe Karlsson",
+  "author": "Joe Karlsson and Tim Kendall",
   "repository": {
     "type": "git",
     "url": "https://github.com/joekarlsson/mss.git"

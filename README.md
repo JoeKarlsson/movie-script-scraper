@@ -44,6 +44,12 @@ Conveniently IMSDB provides RSS feeds based on movie genre (ex. <http://www.imsd
         <br />
         <a href="https://github.com/JoeKarlsson">Joe Karlsson</a>
       </td>
+			<td align="center">
+        <img width="150 height="150"
+        src="https://avatars.githubusercontent.com/timkendall?v=3">
+        <br />
+        <a href="https://github.com/timkendall">Tim Kendall</a>
+      </td>
     <tr>
   <tbody>
 </table>
