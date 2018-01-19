@@ -86,6 +86,6 @@ Conveniently IMSDB provides RSS feeds based on movie genre (ex. <http://www.imsd
 [stars]: https://img.shields.io/github/stars/JoeKarlsson/movie-script-scrapper.svg?style=flat-square
 [stars-url]: https://github.com/JoeKarlsson/movie-script-scrapper/stargazers
 [license]: https://img.shields.io/github/license/JoeKarlsson/movie-script-scrapper.svg
-[license-url]: https://github.com/JoeKarlsson/movie-script-scrapper/blob/develop/LICENSE
+[license-url]: https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/LICENSE
 [twitter]: https://img.shields.io/twitter/url/https/github.com/JoeKarlsson/movie-script-scrapper.svg?style=social&style=flat-square
-[twitter-url]: https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scrapper
+[twitter-url]: https://twitter.com/intent/tweet?text=Movie%20Site%20Scrapper:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scrapper
