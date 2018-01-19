@@ -3,6 +3,7 @@ const string = require('string');
 const api = require('./api');
 const getScript = require('./getScript');
 const checkDirectory = require('./checkDirectory');
+const isValidGenre = require('./helper/isValidGenre');
 const handleError = require('./helper/handleError');
 
 const randomNum = () => {
@@ -48,33 +49,6 @@ const handleURLs = html => {
 	return urls;
 };
 
-const isValidGenre = genre => {
-	// List of valid genres
-	const genres = [
-		'Action',
-		'Adventure',
-		'Animation',
-		'Comedy',
-		'Crime',
-		'Drama',
-		'Family',
-		'Fantasy',
-		'Film-Noir',
-		'Horror',
-		'Musical',
-		'Mystery',
-		'Romance',
-		'Sci-Fi',
-		'Short',
-		'Thriller',
-		'War',
-		'Western',
-	];
-
-	const isValid = _.indexOf(genres, genre) > -1;
-	return isValid;
-};
-
 const getScriptsByGenre = async (genre = 'Action', total = 10) => {
 	if (isValidGenre(genre)) {
 		try {
@@ -83,7 +57,7 @@ const getScriptsByGenre = async (genre = 'Action', total = 10) => {
 			const urls = handleURLs(rawURLs);
 			return addScriptsToDir(urls, genre, total);
 		} catch (err) {
-			handleError(err);
+			return handleError(err);
 		}
 	}
 	handleError('Invalid Genre');

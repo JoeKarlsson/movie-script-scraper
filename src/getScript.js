@@ -40,13 +40,14 @@ const extractPageContents = html => {
 
 const getScript = async (scriptURL, genre = null) => {
 	try {
-		console.log('scriptURL', scriptURL);
 		const rawScriptData = await api(scriptURL);
 		// console.log('rawScriptData', rawScriptData);
 		const { script, title } = extractPageContents(rawScriptData);
 
 		// Return if no script (probably TV episode, slightly different URL)
-		if (script.length < 500) return;
+		if (script.length < 500 && !genre) {
+			return handleError('Script not found');
+		}
 
 		if (genre) {
 			const path = `scripts/${genre}/${title}.txt`;

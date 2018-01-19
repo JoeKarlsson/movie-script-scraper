@@ -2,34 +2,12 @@
 	eslint-disable prefer-destructuring
 */
 
-const _ = require('lodash');
 const minimist = require('minimist');
 const mss = require('./mss');
+const isValidGenre = require('./helper/isValidGenre');
 
 // Process command line arguments
 const argv = minimist(process.argv.slice(2));
-
-// List of valid genres
-const genres = [
-	'Action',
-	'Adventure',
-	'Animation',
-	'Comedy',
-	'Crime',
-	'Drama',
-	'Family',
-	'Fantasy',
-	'Film-Noir',
-	'Horror',
-	'Musical',
-	'Mystery',
-	'Romance',
-	'Sci-Fi',
-	'Short',
-	'Thriller',
-	'War',
-	'Western',
-];
 
 // Set default genre and total number of scripts
 let genre = argv.genre || 'Action';
@@ -41,7 +19,7 @@ if (!argv.genre && !argv.total) {
 } else if (!argv.genre && argv.total) {
 	total = argv.total;
 	console.log(`Getting ${total} random scripts for movies of ${genre}`);
-} else if (_.indexOf(genres, argv.genre) > -1) {
+} else if (isValidGenre(genre)) {
 	console.log('Sorry, invalid genre.');
 } else {
 	genre = argv.genre;
