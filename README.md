@@ -9,30 +9,32 @@ MSS "Movie Script Scrapper" - A simple scrapper to retrieve scripts by genre fro
 
 # Methods
 
-    			var mss = require('mss');
+```javascript
+var mss = require('mss');
 
-    			var options = {
-    				genre: 'Action',
-    				total: 10,
-    			};
+var options = {
+	genre: 'Action',
+	total: 10,
+};
 
-    			mss(options)
-    				.then(filePaths => {
-    					console.log(filePaths);
-    				})
-    				.catch(err => {
-    					console.error('There was a problem');
-    				});
+mss(options)
+	.then(filePaths => {
+		console.log(filePaths);
+	})
+	.catch(err => {
+		console.error('There was a problem');
+	});
+```
 
 #### Options
 
-    * `genre` [__string__] - Any valid film genre, a complete list can be found [here](https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/src/helper/isValidGenre.js).
-    	* Defaults to "Action".
-    * `total` [__number__] - the total number of scripts you want from a given genre.
-    	* Defaults to 10.
-    * `title` [__string__] - The name of the film's script you want.
-    * *TODO* - `scriptDir` [string] - Location that you want to save your scripts.
-    	* Defaults to ./scripts
+* `genre` [__string__] - Any valid film genre, a complete list can be found [here](https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/src/helper/isValidGenre.js).
+  * Defaults to "Action".
+* `total` [__number__] - the total number of scripts you want from a given genre.
+  * Defaults to 10.
+* `title` [__string__] - The name of the film's script you want.
+* _TODO_ - `scriptDir` [string] - Location that you want to save your scripts.
+  * Defaults to ./scripts
 
 # Command Line Usage
 
