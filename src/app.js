@@ -3,7 +3,7 @@
 */
 
 const _ = require('lodash');
-const getURLs = require('./getURLs');
+const getScriptsByGenre = require('./getScriptsByGenre');
 const minimist = require('minimist');
 
 const mss = argv => {
@@ -30,7 +30,7 @@ const mss = argv => {
 	];
 
 	// Set default genre and total number of scripts
-	let genre = 'Action';
+	let genre = argv.genre || 'Action';
 	let total = 0;
 
 	// Check if it's a valid genre and if a total number of scripts was given
@@ -50,9 +50,9 @@ const mss = argv => {
 		} else {
 			console.log(`Getting all scripts for movies of ${genre}`);
 		}
+		console.log('hit');
 	}
-
-	getURLs(genre, total);
+	getScriptsByGenre(genre, total);
 };
 
 // Process command line arguments

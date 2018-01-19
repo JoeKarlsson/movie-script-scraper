@@ -2,11 +2,10 @@
   "name": "mss",
   "description": "Simple movie scripts scrapper.",
   "version": "0.0.1",
-  "private": true,
   "author": "Joe Karlsson",
   "repository": {
     "type": "git",
-    "url": "https://github.com/timkendall/mss.git"
+    "url": "https://github.com/joekarlsson/mss.git"
   },
   "engines": {
     "node": "0.10.x",
@@ -18,10 +17,11 @@
   },
   "dependencies": {
     "cheerio": "latest",
+    "es6-promise": "^4.2.2",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "latest",
     "minimist": "0.0.8",
     "mkdirp": "^0.4.0",
-    "request": "latest",
     "string": "^1.8.1"
   },
   "devDependencies": {
