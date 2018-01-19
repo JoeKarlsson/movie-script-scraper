@@ -40,15 +40,21 @@ mss(options)
 
 Enter a genre (defaults to Action) or a total (defaults to 10 scripts):
 
-        $ npm start --total 10 --genre Comedy
+```bash
+$ npm start --total 10 --genre Comedy
+```
 
 or enter a title:
 
+```bash
     		$ npm start --title 'american sniper'
+```
 
 Note: Be sure to install required modules with
 
-        $ npm install
+```bash
+$ npm install
+```
 
 # How it Works
 
