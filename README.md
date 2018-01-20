@@ -14,7 +14,7 @@
 
 [![NPM](https://nodei.co/npm/movie-script-scraper.png)](https://npmjs.org/package/movie-script-scraper)
 
-A simple scrapper to retrieve scripts by genre or title from IMSDB.
+A simple scraper to retrieve scripts by genre or title from [IMSDB](http://www.imsdb.com/).
 
 # Installation
 
