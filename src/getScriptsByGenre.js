@@ -10,14 +10,17 @@ const randomNum = () => {
 	return Math.floor(Math.random() * 100 + 1);
 };
 
-const addScriptsToDir = (urls, genre, total) => {
-	// Remove invalid script URLs
-	const cleaned = _.remove(urls, url => {
+const removeInvalidURLs = urls => {
+	return _.remove(urls, url => {
 		return string(url).contains('.html');
 	});
+};
+
+const addScriptsToDir = (urls, genre, total) => {
+	const cleaned = removeInvalidURLs(urls);
 
 	// Create directory if doesn't exist
-	checkDirectory(genre, () => {
+	return checkDirectory(genre).then(() => {
 		// Loop through script URLs
 		cleaned.forEach(url => {
 			let totalCounter = 0;

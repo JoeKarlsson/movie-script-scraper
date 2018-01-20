@@ -4,18 +4,16 @@ const fs = require('fs');
 const stat = util.promisify(fs.stat);
 const mkdirp = require('mkdirp');
 
-const checkDirectory = (genre, callback) => {
+const checkDirectory = genre => {
 	// Create directory if it doesn't exist
-	stat(`scripts/${genre}/`)
+	return stat(`scripts/${genre}/`)
 		.then(() => {
-			// Execute callback
-			callback();
+			return true;
 		})
 		.catch(() => {
 			mkdirp(`scripts/${genre}/`, err => {
 				if (err) return console.log(`Failed to make directory for ${genre}`);
-				// Execute callback
-				callback();
+				return true;
 			});
 		});
 };

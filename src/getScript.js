@@ -24,7 +24,6 @@ const getCleanTitle = $ => {
 };
 
 const extractPageContents = html => {
-	// Extract page contents
 	const $ = cheerio.load(html);
 
 	let script = $('table:nth-child(2)').text();
@@ -38,14 +37,21 @@ const extractPageContents = html => {
 	};
 };
 
+const invalidScript = (script, genre) => {
+	// Return if no script (probably TV episode, slightly different URL)
+	if (script.length < 500 && !genre) {
+		return true;
+	}
+	return false;
+};
+
 const getScript = async (scriptURL, genre = null) => {
 	try {
 		const rawScriptData = await api(scriptURL);
-		// console.log('rawScriptData', rawScriptData);
 		const { script, title } = extractPageContents(rawScriptData);
 
 		// Return if no script (probably TV episode, slightly different URL)
-		if (script.length < 500 && !genre) {
+		if (invalidScript(script, genre)) {
 			return handleError('Script not found');
 		}
 

@@ -1,9 +1,13 @@
 # MSS
 
+[![deps][deps]][deps-url]
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
 [![license][license]][license-url]
 [![twitter][twitter]][twitter-url]
+[![snyk][snyk]][snyk-url]
+[![greenkeeper][greenkeeper]][greenkeeper-url]
+[![bch compliance][bchcompliance]][bchcompliance-url]
 
 A simple scrapper to retrieve scripts by genre from IMSDB.
 
@@ -105,6 +109,8 @@ $ npm test
 
 #### [MIT](./LICENSE)
 
+[deps]: https://david-dm.org/JoeKarlsson/movie-script-scrapper/status.svg
+[deps-url]: https://david-dm.org/JoeKarlsson/movie-script-scrapper
 [pr]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [pr-url]: CONTRIBUTING.md
 [stars]: https://img.shields.io/github/stars/JoeKarlsson/movie-script-scrapper.svg?style=flat-square
@@ -113,3 +119,9 @@ $ npm test
 [license-url]: https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/LICENSE
 [twitter]: https://img.shields.io/twitter/url/https/github.com/JoeKarlsson/movie-script-scrapper.svg?style=social&style=flat-square
 [twitter-url]: https://twitter.com/intent/tweet?text=Movie%20Site%20Scrapper:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scrapper
+[greenkeeper]: https://badges.greenkeeper.io/JoeKarlsson/movie-script-scrapper.svg
+[greenkeeper-url]: https://greenkeeper.io/
+[snyk]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper/badge.svg
+[snyk-url]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper
+[bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scrapper?branch=develop
+[bchcompliance-url]: https://bettercodehub.com/
