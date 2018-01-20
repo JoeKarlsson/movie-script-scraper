@@ -10,9 +10,9 @@
 [![snyk][snyk]][snyk-url]
 [![greenkeeper][greenkeeper]][greenkeeper-url]
 [![bch compliance][bchcompliance]][bchcompliance-url]
-[![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scrapper/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scraper/maintainability)
 
-[![NPM](https://nodei.co/npm/movie-script-scrapper.png)](https://npmjs.org/package/movie-script-scrapper)
+[![NPM](https://nodei.co/npm/movie-script-scraper.png)](https://npmjs.org/package/movie-script-scraper)
 
 A simple scrapper to retrieve scripts by genre or title from IMSDB.
 
