@@ -1,7 +1,7 @@
 {
   "name": "movie-script-scraper",
   "description": "Simple movie scripts scraper.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/JoeKarlsson/movie-script-scraper",
   "keywords": [
     "movie script scraper",
