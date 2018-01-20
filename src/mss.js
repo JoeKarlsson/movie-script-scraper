@@ -1,8 +1,8 @@
 const getScriptsByGenre = require('./getScriptsByGenre');
 const getScriptByTitle = require('./getScriptByTitle');
 
-const mss = async argv => {
-	let { genre, title, total, dest } = argv;
+const mss = async options => {
+	let { genre, title, total, dest } = options;
 
 	title = title || 'Frozen';
 	genre = genre || 'Action';
