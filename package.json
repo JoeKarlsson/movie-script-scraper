@@ -15,6 +15,7 @@
     "test:updateSnapshot": "jest --updateSnapshot",
     "test:coverage": "jest --coverage",
     "lint": "eslint src",
+    "healthcheck": "npm run lint && npm run test:coverage",
     "precommit": "npm run lint",
     "prepush": "npm prune && npm run healthcheck",
     "postcommit": "git status",
