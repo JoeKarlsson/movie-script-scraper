@@ -1,6 +1,8 @@
 # Movie Script Scraper
 
 [![deps][deps]][deps-url]
+[![Coverage Status][cover]][cover-url]
+[![Build Status][tests]][tests-url]
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
 [![license][license]][license-url]
@@ -110,6 +112,10 @@ $ npm test
 
 #### [MIT](./LICENSE)
 
+[cover]: https://coveralls.io/repos/github/JoeKarlsson/movie-script-scrapper/badge.svg?branch=develop
+[cover-url]: https://coveralls.io/github/JoeKarlsson/movie-script-scrapper?branch=develop
+[tests]: https://travis-ci.org/JoeKarlsson/movie-script-scrapper.svg?branch=develop
+[tests-url]: https://travis-ci.org/JoeKarlsson/movie-script-scrapper
 [deps]: https://david-dm.org/JoeKarlsson/movie-script-scrapper/status.svg
 [deps-url]: https://david-dm.org/JoeKarlsson/movie-script-scrapper
 [pr]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
