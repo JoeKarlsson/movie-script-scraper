@@ -24,6 +24,10 @@ const parseArgs = argv => {
 	return validArgs;
 };
 
+const cleanArr = arr => {
+	return arr.filter(Boolean);
+};
+
 const app = async () => {
 	const argv = minimist(process.argv.slice(2));
 	const clear = parseArgs(argv);
@@ -35,7 +39,7 @@ const app = async () => {
 
 		const filePaths = await mss(argv);
 		console.log('Script scrapping complete!');
-		return filePaths;
+		return cleanArr(filePaths);
 	}
 };
 

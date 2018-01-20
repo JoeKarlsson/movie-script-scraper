@@ -50,10 +50,12 @@ const addScriptsToDir = async (urls, genre, total) => {
 			if (totalRandomNumber % 3 !== 0) return; // Don't save
 		}
 
-		const filePath = await getScript(url, genre, total);
-
 		// Increment total counter
-		if (total !== 0) ++totalCounter;
+		if (total !== 0) {
+			++totalCounter;
+		}
+
+		const filePath = await getScript(url, genre, total);
 
 		return filePath;
 	});
