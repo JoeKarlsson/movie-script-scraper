@@ -1,22 +1,8 @@
 const string = require('string');
-const fs = require('fs');
-const util = require('util');
 const cheerio = require('cheerio');
-const api = require('./api');
+const api = require('./helper/api');
 const handleError = require('./helper/handleError');
-
-const writeFile = util.promisify(fs.writeFile);
-
-const writeToFile = (path, script, title) => {
-	return writeFile(path, script)
-		.then(() => {
-			console.log(`Saved ${title}`);
-			return path;
-		})
-		.catch(err => {
-			return handleError(err);
-		});
-};
+const writeToFile = require('./helper/writeToFile');
 
 const getCleanTitle = $ => {
 	let title = string($('title').text())

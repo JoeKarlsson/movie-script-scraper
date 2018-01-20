@@ -1,7 +1,7 @@
 const util = require('util');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
-const handleError = require('./helper/handleError');
+const handleError = require('./handleError');
 
 const stat = util.promisify(fs.stat);
 

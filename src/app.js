@@ -1,32 +1,7 @@
 const minimist = require('minimist');
 const mss = require('./mss');
-const isValidGenre = require('./helper/isValidGenre');
-
-const parseArgs = argv => {
-	const { genre, title } = argv;
-	let { total } = argv;
-
-	total = total || 10;
-	let validArgs = true;
-
-	if (genre) {
-		if (isValidGenre(genre)) {
-			console.log(`Getting ${total} random scripts for movies of ${genre}`);
-		} else {
-			console.log('Sorry, invalid genre.');
-			validArgs = false;
-		}
-	}
-	if (title) {
-		return validArgs;
-	}
-
-	return validArgs;
-};
-
-const cleanArr = arr => {
-	return arr.filter(Boolean);
-};
+const cleanArr = require('./helper/cleanArr');
+const parseArgs = require('./helper/parseArgs');
 
 const app = async () => {
 	const argv = minimist(process.argv.slice(2));

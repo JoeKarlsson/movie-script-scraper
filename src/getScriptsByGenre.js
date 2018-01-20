@@ -1,8 +1,8 @@
 const _ = require('lodash');
 const string = require('string');
-const api = require('./api');
+const api = require('./helper/api');
 const getScript = require('./getScript');
-const checkDirectory = require('./checkDirectory');
+const checkDirectory = require('./helper/checkDirectory');
 const isValidGenre = require('./helper/isValidGenre');
 const handleError = require('./helper/handleError');
 

@@ -1,11 +1,9 @@
 const getScriptsByGenre = require('./getScriptsByGenre');
 const getScriptByTitle = require('./getScriptByTitle');
-
-const cleanArr = arr => {
-	return arr.filter(Boolean);
-};
+const cleanArr = require('./helper/cleanArr');
 
 const mss = async options => {
+	let filePaths;
 	let { genre, title, total, dest } = options;
 
 	title = title || 'Frozen';
@@ -14,13 +12,12 @@ const mss = async options => {
 	dest = dest || 'scripts';
 
 	if (genre) {
-		const filePaths = await getScriptsByGenre(genre, total, dest);
-		return cleanArr(filePaths);
+		filePaths = await getScriptsByGenre(genre, total, dest);
 	} else if (title) {
-		const filePaths = await getScriptByTitle(title, dest);
-		return cleanArr(filePaths);
+		filePaths = await getScriptByTitle(title, dest);
+	} else {
+		filePaths = await getScriptsByGenre(dest);
 	}
-	const filePaths = await getScriptsByGenre(dest);
 	return cleanArr(filePaths);
 };
 

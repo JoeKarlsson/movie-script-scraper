@@ -1,10 +1,11 @@
 require('es6-promise').polyfill();
 const fetch = require('isomorphic-fetch');
-const handleError = require('./helper/handleError');
+const handleError = require('./handleError');
 
-const getURLs = url => {
+const api = url => {
 	return fetch(url)
 		.then(response => {
+			console.log(response);
 			return response.text();
 		})
 		.catch(err => {
@@ -12,4 +13,4 @@ const getURLs = url => {
 		});
 };
 
-module.exports = getURLs;
+module.exports = api;
