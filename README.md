@@ -12,6 +12,8 @@
 [![bch compliance][bchcompliance]][bchcompliance-url]
 [![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scrapper/maintainability)
 
+[![NPM](https://nodei.co/npm//movie-script-scrapper.png)](https://npmjs.org/package//movie-script-scrapper)
+
 A simple scrapper to retrieve scripts by genre or title from IMSDB.
 
 # Installation
