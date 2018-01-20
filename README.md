@@ -8,6 +8,7 @@
 [![snyk][snyk]][snyk-url]
 [![greenkeeper][greenkeeper]][greenkeeper-url]
 [![bch compliance][bchcompliance]][bchcompliance-url]
+[![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scrapper/maintainability)
 
 A simple scrapper to retrieve scripts by genre from IMSDB.
 
