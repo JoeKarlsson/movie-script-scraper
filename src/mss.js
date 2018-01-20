@@ -1,6 +1,10 @@
 const getScriptsByGenre = require('./getScriptsByGenre');
 const getScriptByTitle = require('./getScriptByTitle');
 
+const cleanArr = arr => {
+	return arr.filter(Boolean);
+};
+
 const mss = async options => {
 	let { genre, title, total, dest } = options;
 
@@ -10,12 +14,14 @@ const mss = async options => {
 	dest = dest || 'scripts';
 
 	if (genre) {
-		const result = await getScriptsByGenre(genre, total, dest);
-		return result;
+		const filePaths = await getScriptsByGenre(genre, total, dest);
+		return cleanArr(filePaths);
 	} else if (title) {
-		return getScriptByTitle(title, dest);
+		const filePaths = await getScriptByTitle(title, dest);
+		return cleanArr(filePaths);
 	}
-	return getScriptsByGenre(dest);
+	const filePaths = await getScriptsByGenre(dest);
+	return cleanArr(filePaths);
 };
 
 module.exports = mss;

@@ -1,8 +1,8 @@
 # Movie Script Scraper
 
 [![deps][deps]][deps-url]
-[![Coverage Status][cover]][cover-url]
-[![Build Status][tests]][tests-url]
+[![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scrapper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scrapper?branch=master)
+[![Build Status](https://travis-ci.org/JoeKarlsson/movie-script-scrapper.svg?branch=master)](https://travis-ci.org/JoeKarlsson/movie-script-scrapper)
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
 [![license][license]][license-url]
@@ -14,7 +14,7 @@
 
 [![NPM](https://nodei.co/npm/movie-script-scraper.png)](https://npmjs.org/package/movie-script-scraper)
 
-A simple scraper to retrieve scripts by genre or title from [IMSDB](http://www.imsdb.com/).
+A simple scraper to retrieve movie scripts by genre or title from [IMSDB](http://www.imsdb.com/).
 
 # Installation
 
@@ -26,7 +26,7 @@ $ npm install -S movie-script-scraper
 
 ## Example Usage
 
-**MSS** exposes a function; simply pass this function the options (see below), and it will return a promise with an array of the file paths of the scripts it saved.
+**Movie Script Scraper** exposes a function; simply pass this function the options ([see below](https://github.com/JoeKarlsson/movie-script-scraper#options)), and it will return a promise with an array of the file paths of the scripts it saved.
 
 ```javascript
 const mss = require('movie-script-scraper');
@@ -81,13 +81,15 @@ Conveniently IMSDB provides RSS feeds based on movie genre (ex. <http://www.imsd
 $ npm install
 ```
 
-1. Run Tests
+2. Run Tests
 
 ```bash
 $ npm test
 ```
 
 ## Contributing
+
+Don't hesitate to create a pull request. Every contribution is appreciated. In development you can start the tests by calling `npm test`. Checkout our [contribution README](https://github.com/JoeKarlsson/react-redux-boilerplate/blob/master/CONTRIBUTING.md) for more info.
 
 1. Fork it!
 1. Create your feature branch: `git checkout -b my-new-feature`

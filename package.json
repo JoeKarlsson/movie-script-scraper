@@ -1,6 +1,6 @@
 {
   "name": "movie-script-scraper",
-  "description": "Simple movie scripts scraper.",
+  "description": "A simple scraper to retrieve movie scripts by genre or title from IMSDB.",
   "version": "0.0.2",
   "homepage": "https://github.com/JoeKarlsson/movie-script-scraper",
   "keywords": [
@@ -36,7 +36,7 @@
     "healthcheck": "npm run lint && npm run test:coverage",
     "precommit": "npm run lint",
     "prepush": "npm prune && npm run healthcheck",
-    "postcommit": "git status",
+    "postcommit": "ginpm publist status",
     "postmerge": "npm install"
   },
   "dependencies": {
