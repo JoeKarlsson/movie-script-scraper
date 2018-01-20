@@ -1,14 +1,21 @@
 const string = require('string');
 const fs = require('fs');
+const util = require('util');
 const cheerio = require('cheerio');
 const api = require('./api');
 const handleError = require('./helper/handleError');
 
+const writeFile = util.promisify(fs.writeFile);
+
 const writeToFile = (path, script, title) => {
-	fs.writeFile(path, script, err => {
-		if (err) console.log(err);
-		else console.log(`Saved ${title}`);
-	});
+	return writeFile(path, script)
+		.then(() => {
+			console.log(`Saved ${title}`);
+			return path;
+		})
+		.catch(err => {
+			return handleError(err);
+		});
 };
 
 const getCleanTitle = $ => {
@@ -57,13 +64,12 @@ const getScript = async (scriptURL, genre = null) => {
 
 		if (genre) {
 			const path = `scripts/${genre}/${title}.txt`;
-			writeToFile(path, script, title);
-		} else {
-			const path = `scripts/${title}.txt`;
-			writeToFile(path, script, title);
+			return writeToFile(path, script, title);
 		}
+		const path = `scripts/${title}.txt`;
+		return writeToFile(path, script, title);
 	} catch (e) {
-		handleError(e);
+		return handleError(e);
 	}
 };
 

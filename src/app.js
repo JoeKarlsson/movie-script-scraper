@@ -24,7 +24,7 @@ const parseArgs = argv => {
 	return validArgs;
 };
 
-const app = () => {
+const app = async () => {
 	const argv = minimist(process.argv.slice(2));
 	const clear = parseArgs(argv);
 
@@ -33,7 +33,9 @@ const app = () => {
 		argv.genre = argv.genre || undefined;
 		argv.total = argv.total || undefined;
 
-		mss(argv);
+		const filePaths = await mss(argv);
+		console.log('Script scrapping complete!');
+		return filePaths;
 	}
 };
 

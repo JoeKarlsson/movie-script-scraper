@@ -16,6 +16,25 @@ const removeInvalidURLs = urls => {
 	});
 };
 
+// const randomlyRetreiveScript = async (url, genre, total) => {
+// 	let totalCounter = 0;
+//
+// 	// Randomly choosing if script shall be saved
+// 	if (total !== 0) {
+// 		if (totalCounter === total) return;
+// 		const totalRandomNumber = randomNum();
+// 		if (totalRandomNumber % 3 !== 0) return; // Don't save
+// 	}
+//
+// 	const filePath = await getScript(url, genre, total);
+// 	console.log('filePath', filePath);
+//
+// 	// Increment total counter
+// 	if (total !== 0) ++totalCounter;
+//
+// 	return filePath;
+// };
+
 const addScriptsToDir = async (urls, genre, total) => {
 	let totalCounter = 0;
 
@@ -23,17 +42,24 @@ const addScriptsToDir = async (urls, genre, total) => {
 	await checkDirectory(genre);
 
 	// Loop through script URLs
-	cleaned.forEach(url => {
+	const promiseArr = await cleaned.map(async url => {
 		// Randomly choosing if script shall be saved
 		if (total !== 0) {
 			if (totalCounter === total) return;
 			const totalRandomNumber = randomNum();
 			if (totalRandomNumber % 3 !== 0) return; // Don't save
 		}
-		getScript(url, genre, total);
+
+		const filePath = await getScript(url, genre, total);
 
 		// Increment total counter
 		if (total !== 0) ++totalCounter;
+
+		return filePath;
+	});
+
+	return Promise.all(promiseArr).then(data => {
+		return data;
 	});
 };
 
@@ -56,7 +82,8 @@ const getScriptsByGenre = async (genre = 'Action', total = 10) => {
 			const url = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
 			const rawURLs = await api(url);
 			const urls = handleURLs(rawURLs);
-			return addScriptsToDir(urls, genre, total);
+			const filePaths = await addScriptsToDir(urls, genre, total);
+			return filePaths;
 		} catch (err) {
 			return handleError(err);
 		}
