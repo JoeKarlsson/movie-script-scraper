@@ -47,8 +47,8 @@ mss(options)
 * `total` [__number__] - the total number of scripts you want from a given genre.
   * Defaults to 10.
 * `title` [__string__] - The name of the film's script you want.
-* `scriptDir` [string] - Location that you want to save your scripts.
-  * Defaults to ./scripts
+* `dest` [__string__] - Location that you want to save your scripts.
+  * Defaults to ./scripts in the root directory.
 
 ## Running from command line
 

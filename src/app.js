@@ -36,6 +36,7 @@ const app = async () => {
 		argv.title = argv.title || undefined;
 		argv.genre = argv.genre || undefined;
 		argv.total = argv.total || undefined;
+		argv.dest = argv.dest || undefined;
 
 		const filePaths = await mss(argv);
 		console.log('Script scrapping complete!');

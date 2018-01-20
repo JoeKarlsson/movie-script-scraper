@@ -8,9 +8,9 @@ const createURL = title => {
 	return `http://www.imsdb.com/scripts/${urlTitle}.html`;
 };
 
-const getScriptByTitle = title => {
+const getScriptByTitle = (title, dest = 'script') => {
 	const url = createURL(title);
-	return getScript(url);
+	return getScript(url, dest);
 };
 
 module.exports = getScriptByTitle;

@@ -52,7 +52,7 @@ const invalidScript = (script, genre) => {
 	return false;
 };
 
-const getScript = async (scriptURL, genre = null) => {
+const getScript = async (scriptURL, dest = 'scripts', genre = null) => {
 	try {
 		const rawScriptData = await api(scriptURL);
 		const { script, title } = extractPageContents(rawScriptData);
@@ -63,7 +63,7 @@ const getScript = async (scriptURL, genre = null) => {
 		}
 
 		if (genre) {
-			const path = `scripts/${genre}/${title}.txt`;
+			const path = `${dest}/${genre}/${title}.txt`;
 			return writeToFile(path, script, title);
 		}
 		const path = `scripts/${title}.txt`;

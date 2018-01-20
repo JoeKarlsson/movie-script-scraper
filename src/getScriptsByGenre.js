@@ -35,11 +35,11 @@ const removeInvalidURLs = urls => {
 // 	return filePath;
 // };
 
-const addScriptsToDir = async (urls, genre, total) => {
+const addScriptsToDir = async (urls, genre, total, dest) => {
 	let totalCounter = 0;
 
 	const cleaned = removeInvalidURLs(urls);
-	await checkDirectory(genre);
+	await checkDirectory(dest, genre);
 
 	// Loop through script URLs
 	const promiseArr = await cleaned.map(async url => {
@@ -55,7 +55,7 @@ const addScriptsToDir = async (urls, genre, total) => {
 			++totalCounter;
 		}
 
-		const filePath = await getScript(url, genre, total);
+		const filePath = await getScript(url, dest, genre);
 
 		return filePath;
 	});
@@ -78,13 +78,13 @@ const handleURLs = html => {
 	return urls;
 };
 
-const getScriptsByGenre = async (genre = 'Action', total = 10) => {
+const getScriptsByGenre = async (genre, total, dest) => {
 	if (isValidGenre(genre)) {
 		try {
 			const url = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
 			const rawURLs = await api(url);
 			const urls = handleURLs(rawURLs);
-			const filePaths = await addScriptsToDir(urls, genre, total);
+			const filePaths = await addScriptsToDir(urls, genre, total, dest);
 			return filePaths;
 		} catch (err) {
 			return handleError(err);
