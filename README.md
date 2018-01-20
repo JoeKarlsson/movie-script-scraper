@@ -123,5 +123,5 @@ $ npm test
 [greenkeeper-url]: https://greenkeeper.io/
 [snyk]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper/badge.svg
 [snyk-url]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper
-[bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scrapper?branch=develop
+[bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scrapper?branch=master
 [bchcompliance-url]: https://bettercodehub.com/
