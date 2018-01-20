@@ -9,8 +9,16 @@
   },
   "scripts": {
     "start": "node src/app",
-    "test": "jest",
-    "lint": "eslint src"
+    "test": "jest --coverage",
+    "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
+    "test:watch": "jest --watch",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src",
+    "precommit": "npm run lint",
+    "prepush": "npm prune && npm run healthcheck",
+    "postcommit": "git status",
+    "postmerge": "npm install"
   },
   "dependencies": {
     "cheerio": "latest",
@@ -22,13 +30,16 @@
     "string": "^3.3.3"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.4.0",
+    "husky": "^0.14.3",
     "jest": "^22.1.4",
+    "nyc": "^11.4.1",
     "prettier": "^1.10.2"
   }
 }
