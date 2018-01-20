@@ -21,12 +21,12 @@ $ npm install -S mss
 
 ## Example Usage
 
-**MSS** exposes a function; simply pass this function the options (see below), and it will return a promise with the file paths of the scripts it saved.
+**MSS** exposes a function; simply pass this function the options (see below), and it will return a promise with an array of the file paths of the scripts it saved.
 
 ```javascript
-var mss = require('mss');
+const mss = require('mss');
 
-var options = {
+const options = {
 	genre: 'Action',
 	total: 10,
 };
@@ -47,7 +47,7 @@ mss(options)
 * `total` [__number__] - the total number of scripts you want from a given genre.
   * Defaults to 10.
 * `title` [__string__] - The name of the film's script you want.
-* _TODO_ - `scriptDir` [string] - Location that you want to save your scripts.
+* `scriptDir` [string] - Location that you want to save your scripts.
   * Defaults to ./scripts
 
 ## Running from command line
