@@ -1,4 +1,4 @@
-# MSS
+# Movie Script Scraper
 
 [![deps][deps]][deps-url]
 [![stars][stars]][stars-url]
@@ -10,12 +10,12 @@
 [![bch compliance][bchcompliance]][bchcompliance-url]
 [![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scrapper/maintainability)
 
-A simple scrapper to retrieve scripts by genre from IMSDB.
+A simple scrapper to retrieve scripts by genre or title from IMSDB.
 
 # Installation
 
 ```bash
-$ npm install -S mss
+$ npm install -S movie-script-scraper
 ```
 
 # Usage
@@ -25,7 +25,7 @@ $ npm install -S mss
 **MSS** exposes a function; simply pass this function the options (see below), and it will return a promise with an array of the file paths of the scripts it saved.
 
 ```javascript
-const mss = require('mss');
+const mss = require('movie-script-scraper ');
 
 const options = {
 	genre: 'Action',
@@ -56,13 +56,13 @@ mss(options)
 You can run MSS directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g mss`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scrapper#options).
 
 ```bash
-$ mss --total 10 --genre Comedy
+$ movie-script-scraper  --total 10 --genre Comedy
 ```
 
 or enter a title:
 
 ```bash
-$ mss --title 'american sniper'
+$ movie-script-scraper  --title 'american sniper'
 ```
 
 # How it Works
@@ -74,7 +74,7 @@ Conveniently IMSDB provides RSS feeds based on movie genre (ex. <http://www.imsd
 1. Install dependencies with:
 
 ```bash
-$ npm install -S mss
+$ npm install
 ```
 
 1. Run Tests
