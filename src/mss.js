@@ -5,8 +5,9 @@ const mss = async argv => {
 	const { genre, title, total } = argv;
 
 	if (genre) {
+		console.log('total', total);
+
 		const result = await getScriptsByGenre(genre, total);
-		console.log('result', result);
 		return result;
 	} else if (title) {
 		return getScriptByTitle(title);

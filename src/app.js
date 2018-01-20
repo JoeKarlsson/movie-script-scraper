@@ -3,8 +3,10 @@ const mss = require('./mss');
 const isValidGenre = require('./helper/isValidGenre');
 
 const parseArgs = argv => {
-	const { genre, total, title } = argv;
-	console.log('argv', argv);
+	const { genre, title } = argv;
+	let { total } = argv;
+
+	total = total || 10;
 	let validArgs = true;
 
 	if (genre) {
@@ -27,9 +29,9 @@ const app = () => {
 	const clear = parseArgs(argv);
 
 	if (clear) {
-		argv.title = argv.title || null;
-		argv.genre = argv.genre || null;
-		argv.total = argv.total || null;
+		argv.title = argv.title || undefined;
+		argv.genre = argv.genre || undefined;
+		argv.total = argv.total || undefined;
 
 		mss(argv);
 	}

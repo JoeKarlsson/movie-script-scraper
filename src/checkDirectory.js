@@ -1,8 +1,9 @@
 const util = require('util');
 const fs = require('fs');
+const mkdirp = require('mkdirp');
+const handleError = require('./helper/handleError');
 
 const stat = util.promisify(fs.stat);
-const mkdirp = require('mkdirp');
 
 const checkDirectory = genre => {
 	// Create directory if it doesn't exist
@@ -11,8 +12,10 @@ const checkDirectory = genre => {
 			return true;
 		})
 		.catch(() => {
-			mkdirp(`scripts/${genre}/`, err => {
-				if (err) return console.log(`Failed to make directory for ${genre}`);
+			return mkdirp(`scripts/${genre}/`, err => {
+				if (err) {
+					return handleError(`Failed to make directory for ${genre}`);
+				}
 				return true;
 			});
 		});

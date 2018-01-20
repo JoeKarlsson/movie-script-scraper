@@ -16,26 +16,24 @@ const removeInvalidURLs = urls => {
 	});
 };
 
-const addScriptsToDir = (urls, genre, total) => {
+const addScriptsToDir = async (urls, genre, total) => {
+	let totalCounter = 0;
+
 	const cleaned = removeInvalidURLs(urls);
+	await checkDirectory(genre);
 
-	// Create directory if doesn't exist
-	return checkDirectory(genre).then(() => {
-		// Loop through script URLs
-		cleaned.forEach(url => {
-			let totalCounter = 0;
+	// Loop through script URLs
+	cleaned.forEach(url => {
+		// Randomly choosing if script shall be saved
+		if (total !== 0) {
+			if (totalCounter === total) return;
+			const totalRandomNumber = randomNum();
+			if (totalRandomNumber % 3 !== 0) return; // Don't save
+		}
+		getScript(url, genre, total);
 
-			// Randomly choosing if script shall be saved
-			if (total !== 0) {
-				if (totalCounter === total) return;
-				const totalRandomNumber = randomNum();
-				if (totalRandomNumber % 3 !== 0) return; // Don't save
-			}
-			getScript(url, genre, total);
-
-			// Increment total counter
-			if (total !== 0) ++totalCounter;
-		});
+		// Increment total counter
+		if (total !== 0) ++totalCounter;
 	});
 };
 
