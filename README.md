@@ -29,7 +29,7 @@ $ npm install -S movie-script-scraper
 **MSS** exposes a function; simply pass this function the options (see below), and it will return a promise with an array of the file paths of the scripts it saved.
 
 ```javascript
-const mss = require('movie-script-scraper ');
+const mss = require('movie-script-scraper');
 
 const options = {
 	genre: 'Action',

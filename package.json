@@ -2,11 +2,29 @@
   "name": "movie-script-scraper",
   "description": "Simple movie scripts scraper.",
   "version": "0.0.1",
-  "author": "Joe Karlsson and Tim Kendall",
+  "homepage": "https://github.com/JoeKarlsson/movie-script-scraper",
+  "keywords": [
+    "movie script scraper",
+    "movie",
+    "film",
+    "scraper",
+    "imscb",
+    "script sraper",
+    "screenplay"
+  ],
+  "author": {
+    "name": "Joe Karlsson",
+    "email": "joekarlsson1@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/JoeKarlsson/movie-script-scrapper.git"
   },
+  "bugs": {
+    "url": "https://github.com/JoeKarlsson/movie-script-scraper/issues"
+  },
+  "license": "MIT",
+  "main": "src/mss",
   "scripts": {
     "start": "node src/app",
     "test": "jest --coverage",
