@@ -16,6 +16,11 @@ const removeInvalidURLs = urls => {
 	});
 };
 
+const shouldRandomlySave = () => {
+	const totalRandomNumber = randomNum();
+	return totalRandomNumber % 3 !== 0;
+};
+
 const addScriptsToDir = async (urls, genre, total, dest) => {
 	let totalCounter = 0;
 
@@ -24,20 +29,15 @@ const addScriptsToDir = async (urls, genre, total, dest) => {
 
 	// Loop through script URLs
 	const promiseArr = await cleaned.map(async url => {
+		if (totalCounter === total) return;
+
 		// Randomly choosing if script shall be saved
 		if (total !== 0) {
-			if (totalCounter === total) return;
-			const totalRandomNumber = randomNum();
-			if (totalRandomNumber % 3 !== 0) return; // Don't save
-		}
-
-		// Increment total counter
-		if (total !== 0) {
+			if (shouldRandomlySave()) return; // Don't save
 			++totalCounter;
 		}
 
 		const filePath = await getScript(url, dest, genre);
-
 		return filePath;
 	});
 
