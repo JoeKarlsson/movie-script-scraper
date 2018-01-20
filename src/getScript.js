@@ -32,21 +32,26 @@ const extractPageContents = html => {
 
 const invalidScript = (script, genre) => {
 	// Return if no script (probably TV episode, slightly different URL)
-	if (script.length < 500 && !genre) {
+	console.log(script.length, genre);
+
+	if (script.length < 500) {
 		return true;
 	}
 	return false;
 };
 
-const getScript = async (scriptURL, dest = 'scripts', genre = null) => {
+const getScript = async options => {
+	const { url, genre } = options;
+	let { dest } = options;
+
+	dest = dest || 'scripts';
+
 	try {
-		const rawScriptData = await api(scriptURL);
+		const rawScriptData = await api(url);
 		const { script, title } = extractPageContents(rawScriptData);
 
 		// Return if no script (probably TV episode, slightly different URL)
-		if (invalidScript(script, genre)) {
-			return handleError('Script not found');
-		}
+		if (invalidScript(script, genre)) return false;
 
 		if (genre) {
 			const path = `${dest}/${genre}/${title}.txt`;

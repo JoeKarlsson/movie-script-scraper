@@ -37,7 +37,13 @@ const addScriptsToDir = async (urls, genre, total, dest) => {
 			++totalCounter;
 		}
 
-		const filePath = await getScript(url, dest, genre);
+		const options = {
+			url,
+			dest,
+			genre,
+		};
+
+		const filePath = await getScript(options);
 		return filePath;
 	});
 

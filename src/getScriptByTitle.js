@@ -10,7 +10,11 @@ const createURL = title => {
 
 const getScriptByTitle = (title, dest = 'script') => {
 	const url = createURL(title);
-	return getScript(url, dest);
+	const options = {
+		url,
+		dest,
+	};
+	return getScript(options);
 };
 
 module.exports = getScriptByTitle;
