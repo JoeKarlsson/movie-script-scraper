@@ -18,7 +18,7 @@ A simple scraper to retrieve movie scripts by genre or title from [IMSDB](http:/
 # Installation
 
 ```bash
-$ npm install -S movie-script-scraper
+npm install -S movie-script-scraper
 ```
 
 # Usage
@@ -59,13 +59,13 @@ mss(options)
 You can run the Movie Script Scraper directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g movie-script-scraper`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scraper#options).
 
 ```bash
-$ movie-script-scraper  --total 10 --genre Comedy
+movie-script-scraper  --total 10 --genre Comedy
 ```
 
 or enter a title:
 
 ```bash
-$ movie-script-scraper  --title 'american sniper'
+movie-script-scraper  --title 'american sniper'
 ```
 
 # How it Works
@@ -77,13 +77,13 @@ Conveniently IMSDB provides RSS feeds based on movie genre (ex. <http://www.imsd
 1. Install dependencies with:
 
 ```bash
-$ npm install
+npm install
 ```
 
 2. Run Tests
 
 ```bash
-$ npm test
+npm test
 ```
 
 ## Contributing
