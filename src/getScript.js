@@ -30,21 +30,17 @@ const extractPageContents = html => {
 	};
 };
 
-const invalidScript = (script, genre) => {
+const invalidScript = script => {
 	// Return if no script (probably TV episode, slightly different URL)
-	console.log(script.length, genre);
-
 	if (script.length < 500) {
 		return true;
 	}
 	return false;
 };
 
-const getScript = async options => {
-	const { url, genre } = options;
-	let { dest } = options;
-
-	dest = dest || 'scripts';
+const getScript = async (url, options) => {
+	options.dest = options.dest || 'scripts';
+	const { dest, genre } = options;
 
 	try {
 		const rawScriptData = await api(url);

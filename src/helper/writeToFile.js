@@ -4,10 +4,9 @@ const handleError = require('.//handleError');
 
 const writeFile = util.promisify(fs.writeFile);
 
-const writeToFile = (path, script, title) => {
+const writeToFile = (path, script) => {
 	return writeFile(path, script)
 		.then(() => {
-			console.log(`Saved ${title}`);
 			return path;
 		})
 		.catch(err => {

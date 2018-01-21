@@ -1,4 +1,4 @@
-const checkDirectory = require('./checkDirectory');
+const { checkDirectory } = require('./fileSystem');
 
 describe('checkDirectory', () => {
 	it('should return true if directory exists', () => {

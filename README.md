@@ -57,7 +57,7 @@ mss(options)
 
 ## Running from command line
 
-You can run MSS directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g mss`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scrapper#options).
+You can run the Movie Script Scraper directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g movie-script-scraper`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scrapper#options).
 
 ```bash
 $ movie-script-scraper  --total 10 --genre Comedy
