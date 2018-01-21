@@ -8,7 +8,6 @@
 [![license][license]][license-url]
 [![twitter][twitter]][twitter-url]
 [![snyk][snyk]][snyk-url]
-[![greenkeeper][greenkeeper]][greenkeeper-url]
 [![bch compliance][bchcompliance]][bchcompliance-url]
 [![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scraper/maintainability)
 
@@ -116,10 +115,6 @@ Don't hesitate to create a pull request. Every contribution is appreciated. In d
 
 #### [MIT](./LICENSE)
 
-[cover]: https://coveralls.io/repos/github/JoeKarlsson/movie-script-scrapper/badge.svg?branch=develop
-[cover-url]: https://coveralls.io/github/JoeKarlsson/movie-script-scrapper?branch=develop
-[tests]: https://travis-ci.org/JoeKarlsson/movie-script-scraper.svg?branch=develop
-[tests-url]: https://travis-ci.org/JoeKarlsson/movie-script-scraper
 [deps]: https://david-dm.org/JoeKarlsson/movie-script-scraper/status.svg
 [deps-url]: https://david-dm.org/JoeKarlsson/movie-script-scraper
 [pr]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
@@ -130,8 +125,6 @@ Don't hesitate to create a pull request. Every contribution is appreciated. In d
 [license-url]: https://github.com/JoeKarlsson/movie-script-scraper/blob/master/LICENSE
 [twitter]: https://img.shields.io/twitter/url/https/github.com/JoeKarlsson/movie-script-scraper.svg?style=social&style=flat-square
 [twitter-url]: https://twitter.com/intent/tweet?text=Movie%20Site%20Scrapper:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scraper
-[greenkeeper]: https://badges.greenkeeper.io/JoeKarlsson/movie-script-scraper.svg
-[greenkeeper-url]: https://greenkeeper.io/
 [snyk]: https://snyk.io/test/github/joekarlsson/movie-script-scraper/badge.svg
 [snyk-url]: https://snyk.io/test/github/joekarlsson/movie-script-scraper
 [bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scraper?branch=master
