@@ -1,7 +1,7 @@
 const string = require('string');
 const cheerio = require('cheerio');
-const api = require('./helper/api');
-const handleError = require('./helper/handleError');
+const api = require('../helper/api');
+const handleError = require('../helper/handleError');
 const writeToFile = require('./helper/writeToFile');
 
 const getCleanTitle = $ => {

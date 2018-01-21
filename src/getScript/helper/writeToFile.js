@@ -1,6 +1,6 @@
 const fs = require('fs');
 const util = require('util');
-const handleError = require('.//handleError');
+const handleError = require('../../helper/handleError');
 
 const writeFile = util.promisify(fs.writeFile);
 

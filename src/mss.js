@@ -1,5 +1,5 @@
-const getScriptsByGenre = require('./getScriptsByGenre');
-const getScriptByTitle = require('./getScriptByTitle');
+const getScriptsByGenre = require('./genre/getScriptsByGenre');
+const getScriptByTitle = require('./title/getScriptByTitle');
 const cleanArr = require('./helper/cleanArr');
 const handleError = require('./helper/handleError');
 

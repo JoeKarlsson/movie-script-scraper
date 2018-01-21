@@ -1,12 +1,12 @@
 const _ = require('lodash');
 const string = require('string');
-const api = require('./helper/api');
-const getScript = require('./getScript');
 const { checkDirectory, removeExtraScripts } = require('./helper/fileSystem');
-const randomIntFromInterval = require('./helper/randomIntFromInterval');
-const cleanArr = require('./helper/cleanArr');
-const isValidGenre = require('./helper/isValidGenre');
-const handleError = require('./helper/handleError');
+const api = require('../helper/api');
+const getScript = require('../getScript/getScript');
+const randomIntFromInterval = require('../helper/randomIntFromInterval');
+const cleanArr = require('../helper/cleanArr');
+const isValidGenre = require('../helper/isValidGenre');
+const handleError = require('../helper/handleError');
 
 const removeInvalidURLs = urls => {
 	return _.remove(urls, url => {

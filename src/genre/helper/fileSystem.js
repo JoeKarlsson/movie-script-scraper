@@ -1,8 +1,8 @@
 const util = require('util');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
-const randomIntFromInterval = require('./randomIntFromInterval');
-const handleError = require('./handleError');
+const randomIntFromInterval = require('../../helper/randomIntFromInterval');
+const handleError = require('../../helper/handleError');
 
 const stat = util.promisify(fs.stat);
 const unlink = util.promisify(fs.unlink);
