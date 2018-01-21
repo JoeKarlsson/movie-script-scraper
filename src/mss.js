@@ -5,7 +5,7 @@ const handleError = require('./helper/handleError');
 
 const setDefaults = options => {
 	options.genre = options.genre || 'Action';
-	options.dest = options.dest || 'script';
+	options.dest = options.dest || 'scripts';
 	options.total = options.total || 10;
 
 	return options;
@@ -15,7 +15,7 @@ const mss = async options => {
 	try {
 		let filePaths;
 		const { genre, title } = options;
-		options.dest = options.dest || 'script';
+		options.dest = options.dest || 'scripts';
 		options.total = options.total || 10;
 
 		if (genre) {
