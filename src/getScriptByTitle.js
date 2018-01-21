@@ -1,5 +1,6 @@
 const getScript = require('./getScript');
 const string = require('string');
+const handleError = require('./helper/handleError');
 
 const createURL = title => {
 	const urlTitle = string(title)
@@ -8,13 +9,14 @@ const createURL = title => {
 	return `http://www.imsdb.com/scripts/${urlTitle}.html`;
 };
 
-const getScriptByTitle = (title, dest = 'script') => {
-	const url = createURL(title);
-	const options = {
-		url,
-		dest,
-	};
-	return getScript(options);
+const getScriptByTitle = async options => {
+	try {
+		const url = createURL(options.title);
+		const filePath = await getScript(url, options);
+		return filePath;
+	} catch (e) {
+		handleError(e);
+	}
 };
 
 module.exports = getScriptByTitle;

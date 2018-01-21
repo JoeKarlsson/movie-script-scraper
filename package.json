@@ -27,6 +27,7 @@
   "main": "src/mss",
   "scripts": {
     "start": "node src/app",
+    "start:title": "node src/app --title 'frozen'",
     "test": "jest --coverage",
     "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
     "test:watch": "jest --watch",

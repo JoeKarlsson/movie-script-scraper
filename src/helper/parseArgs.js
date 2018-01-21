@@ -16,6 +16,7 @@ const parseArgs = argv => {
 		}
 	}
 	if (title) {
+		console.log(`Getting script for ${title}`);
 		return validArgs;
 	}
 

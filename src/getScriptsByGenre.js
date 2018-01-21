@@ -61,7 +61,6 @@ const handleURLs = html => {
 
 const getScriptsByGenre = async options => {
 	const { genre } = options;
-	options.total = options.total || 10;
 
 	if (isValidGenre(genre)) {
 		try {

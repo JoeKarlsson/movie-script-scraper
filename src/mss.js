@@ -1,39 +1,37 @@
 const getScriptsByGenre = require('./getScriptsByGenre');
 const getScriptByTitle = require('./getScriptByTitle');
 const cleanArr = require('./helper/cleanArr');
+const handleError = require('./helper/handleError');
 
 const setDefaults = options => {
-	let { genre, title, total, dest } = options;
+	options.genre = options.genre || 'Action';
+	options.dest = options.dest || 'script';
+	options.total = options.total || 10;
 
-	title = title || 'Frozen';
-	genre = genre || 'Action';
-	total = total || 10;
-	dest = dest || 'scripts';
-
-	const defaultOptions = {
-		title,
-		genre,
-		total,
-		dest,
-	};
-
-	return defaultOptions;
+	return options;
 };
 
 const mss = async options => {
-	let filePaths;
-	const { genre, title } = options;
+	try {
+		let filePaths;
+		const { genre, title } = options;
+		options.dest = options.dest || 'script';
+		options.total = options.total || 10;
 
-	if (genre) {
-		filePaths = await getScriptsByGenre(options);
-	} else if (title) {
-		filePaths = await getScriptByTitle(options);
-	} else {
-		const defaultOptions = setDefaults(options);
-		filePaths = await getScriptsByGenre(defaultOptions);
+		if (genre) {
+			filePaths = await getScriptsByGenre(options);
+			filePaths = cleanArr(filePaths);
+		} else if (title) {
+			filePaths = await getScriptByTitle(options);
+		} else {
+			setDefaults(options);
+			filePaths = await getScriptsByGenre(options);
+			filePaths = cleanArr(filePaths);
+		}
+		return filePaths;
+	} catch (e) {
+		handleError(e);
 	}
-	console.log(filePaths);
-	return cleanArr(filePaths);
 };
 
 module.exports = mss;
