@@ -2,7 +2,7 @@
 
 [![deps][deps]][deps-url]
 [![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scrapper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scrapper?branch=master)
-[![Build Status](https://travis-ci.org/JoeKarlsson/movie-script-scrapper.svg?branch=master)](https://travis-ci.org/JoeKarlsson/movie-script-scrapper)
+[![Build Status](https://travis-ci.org/JoeKarlsson/movie-script-scraper.svg?branch=master)](https://travis-ci.org/JoeKarlsson/movie-script-scraper)
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
 [![license][license]][license-url]
@@ -47,7 +47,7 @@ mss(options)
 
 ### Options
 
-* `genre` [__string__] - Any valid film genre, a complete list can be found [here](https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/src/helper/isValidGenre.js).
+* `genre` [__string__] - Any valid film genre, a complete list can be found [here](https://github.com/JoeKarlsson/movie-script-scraper/blob/master/src/helper/isValidGenre.js).
   * Defaults to "Action".
 * `total` [__number__] - the total number of scripts you want from a given genre.
   * Defaults to 10.
@@ -57,7 +57,7 @@ mss(options)
 
 ## Running from command line
 
-You can run the Movie Script Scraper directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g movie-script-scraper`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scrapper#options).
+You can run the Movie Script Scraper directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g movie-script-scraper`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scraper#options).
 
 ```bash
 $ movie-script-scraper  --total 10 --genre Comedy
@@ -89,7 +89,7 @@ $ npm test
 
 ## Contributing
 
-Don't hesitate to create a pull request. Every contribution is appreciated. In development you can start the tests by calling `npm test`. Checkout our [contribution README](https://github.com/JoeKarlsson/react-redux-boilerplate/blob/master/CONTRIBUTING.md) for more info.
+Don't hesitate to create a pull request. Every contribution is appreciated. In development you can start the tests by calling `npm test`. Checkout our [contribution README](https://github.com/JoeKarlsson/movie-script-scraper/blob/master/CONTRIBUTING.md) for more info.
 
 1. Fork it!
 1. Create your feature branch: `git checkout -b my-new-feature`
@@ -118,21 +118,21 @@ Don't hesitate to create a pull request. Every contribution is appreciated. In d
 
 [cover]: https://coveralls.io/repos/github/JoeKarlsson/movie-script-scrapper/badge.svg?branch=develop
 [cover-url]: https://coveralls.io/github/JoeKarlsson/movie-script-scrapper?branch=develop
-[tests]: https://travis-ci.org/JoeKarlsson/movie-script-scrapper.svg?branch=develop
-[tests-url]: https://travis-ci.org/JoeKarlsson/movie-script-scrapper
-[deps]: https://david-dm.org/JoeKarlsson/movie-script-scrapper/status.svg
-[deps-url]: https://david-dm.org/JoeKarlsson/movie-script-scrapper
+[tests]: https://travis-ci.org/JoeKarlsson/movie-script-scraper.svg?branch=develop
+[tests-url]: https://travis-ci.org/JoeKarlsson/movie-script-scraper
+[deps]: https://david-dm.org/JoeKarlsson/movie-script-scraper/status.svg
+[deps-url]: https://david-dm.org/JoeKarlsson/movie-script-scraper
 [pr]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [pr-url]: CONTRIBUTING.md
-[stars]: https://img.shields.io/github/stars/JoeKarlsson/movie-script-scrapper.svg?style=flat-square
-[stars-url]: https://github.com/JoeKarlsson/movie-script-scrapper/stargazers
-[license]: https://img.shields.io/github/license/JoeKarlsson/movie-script-scrapper.svg
-[license-url]: https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/LICENSE
-[twitter]: https://img.shields.io/twitter/url/https/github.com/JoeKarlsson/movie-script-scrapper.svg?style=social&style=flat-square
-[twitter-url]: https://twitter.com/intent/tweet?text=Movie%20Site%20Scrapper:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scrapper
-[greenkeeper]: https://badges.greenkeeper.io/JoeKarlsson/movie-script-scrapper.svg
+[stars]: https://img.shields.io/github/stars/JoeKarlsson/movie-script-scraper.svg?style=flat-square
+[stars-url]: https://github.com/JoeKarlsson/movie-script-scraper/stargazers
+[license]: https://img.shields.io/github/license/JoeKarlsson/movie-script-scraper.svg
+[license-url]: https://github.com/JoeKarlsson/movie-script-scraper/blob/master/LICENSE
+[twitter]: https://img.shields.io/twitter/url/https/github.com/JoeKarlsson/movie-script-scraper.svg?style=social&style=flat-square
+[twitter-url]: https://twitter.com/intent/tweet?text=Movie%20Site%20Scrapper:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scraper
+[greenkeeper]: https://badges.greenkeeper.io/JoeKarlsson/movie-script-scraper.svg
 [greenkeeper-url]: https://greenkeeper.io/
-[snyk]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper/badge.svg
-[snyk-url]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper
-[bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scrapper?branch=master
+[snyk]: https://snyk.io/test/github/joekarlsson/movie-script-scraper/badge.svg
+[snyk-url]: https://snyk.io/test/github/joekarlsson/movie-script-scraper
+[bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scraper?branch=master
 [bchcompliance-url]: https://bettercodehub.com/
