@@ -90,6 +90,8 @@ $ npm test
 
 Don't hesitate to create a pull request. Every contribution is appreciated. In development you can start the tests by calling `npm test`. Checkout our [contribution README](https://github.com/JoeKarlsson/movie-script-scraper/blob/master/CONTRIBUTING.md) for more info.
 
+TLDR;
+
 1. Fork it!
 1. Create your feature branch: `git checkout -b my-new-feature`
 1. Commit your changes: `git commit -am 'Add some feature'`
