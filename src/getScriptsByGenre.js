@@ -3,13 +3,10 @@ const string = require('string');
 const api = require('./helper/api');
 const getScript = require('./getScript');
 const { checkDirectory, removeExtraScripts } = require('./helper/fileSystem');
+const randomIntFromInterval = require('./helper/randomIntFromInterval');
 const cleanArr = require('./helper/cleanArr');
 const isValidGenre = require('./helper/isValidGenre');
 const handleError = require('./helper/handleError');
-
-const randomNum = () => {
-	return Math.floor(Math.random() * 100 + 1);
-};
 
 const removeInvalidURLs = urls => {
 	return _.remove(urls, url => {
@@ -17,9 +14,9 @@ const removeInvalidURLs = urls => {
 	});
 };
 
-const shouldRandomlyNotSave = () => {
-	const totalRandomNumber = randomNum();
-	return totalRandomNumber % 2 !== 0;
+const shouldRandomlySave = () => {
+	const totalRandomNumber = randomIntFromInterval(0, 1000);
+	return totalRandomNumber % 17 === 0;
 };
 
 const addScriptsToDir = async (urls, options) => {
@@ -34,13 +31,13 @@ const addScriptsToDir = async (urls, options) => {
 	const promiseArr = await cleaned.map(async url => {
 		if (totalCounter === total) return;
 
-		if (shouldRandomlyNotSave()) return; // Don't save
+		if (shouldRandomlySave()) {
+			++totalCounter;
 
-		++totalCounter;
+			const filePath = await getScript(url, options);
 
-		const filePath = await getScript(url, options);
-
-		return filePath;
+			return filePath;
+		}
 	});
 
 	return Promise.all(promiseArr).then(data => {
