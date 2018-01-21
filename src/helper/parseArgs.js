@@ -1,10 +1,8 @@
 const isValidGenre = require('./isValidGenre');
 
 const parseArgs = argv => {
-	const { genre, title } = argv;
-	let { total } = argv;
+	const { genre, title, total } = argv;
 
-	total = total || 10;
 	let validArgs = true;
 
 	if (genre) {
