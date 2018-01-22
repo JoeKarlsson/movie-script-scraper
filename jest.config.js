@@ -3,6 +3,7 @@ module.exports = {
 	coverageReporters: ['html', 'text-summary', 'text', 'json', 'lcov'],
 	coverageDirectory: 'coverage',
 	moduleDirectories: ['node_modules', 'src'],
+	coveragePathIgnorePatterns: ['<rootDir>/src/app'],
 	coverageThreshold: {
 		global: {
 			branches: 0,
