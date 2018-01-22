@@ -7,7 +7,6 @@ const handleError = require('../helper/handleError');
 const getScript = async (url, options) => {
 	options.dest = options.dest || 'scripts';
 	const { dest, genre } = options;
-
 	try {
 		const rawScriptData = await api(url);
 		const { script, title } = extractPageContents(rawScriptData);
@@ -17,11 +16,12 @@ const getScript = async (url, options) => {
 
 		if (genre) {
 			const path = `${dest}/${genre}/${title}.txt`;
-
-			return writeToFile(path, script, title);
+			const filePath = await writeToFile(path, script, title);
+			return filePath;
 		}
 		const path = `${dest}/${title}.txt`;
-		return writeToFile(path, script, title);
+		const filePath = await writeToFile(path, script, title);
+		return filePath;
 	} catch (e) {
 		return handleError(e);
 	}

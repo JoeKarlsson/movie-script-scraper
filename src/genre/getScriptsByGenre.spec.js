@@ -2,7 +2,6 @@ const fs = require('fs');
 const fetchMock = require('fetch-mock');
 const getScriptsByGenre = require('./getScriptsByGenre');
 const mocksUrls = require('./helper/__mocks__/data/mock-urls.json');
-// const mocksFilePaths = require('./helper/__mocks__/data/mock-file-paths.json');
 
 jest.unmock('../getScript/getScript');
 jest.mock('../getScript/helper/writeToFile');

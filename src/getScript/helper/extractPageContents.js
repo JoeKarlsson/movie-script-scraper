@@ -1,8 +1,6 @@
 const string = require('string');
 const cheerio = require('cheerio');
 
-const writeToFile = require('./writeToFile');
-
 const title = page => {
 	let title = string(page('title').text())
 		.chompRight(' Script at IMSDb.')
@@ -20,8 +18,6 @@ const extractPageContents = html => {
 	let script = $('table:nth-child(2)').text();
 
 	script = script.replace('Search IMSDb', '');
-
-	writeToFile('html', html);
 
 	const cleanTitle = title($);
 	return {
