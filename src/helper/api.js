@@ -1,5 +1,4 @@
-require('es6-promise').polyfill();
-const fetch = require('isomorphic-fetch');
+require('isomorphic-fetch');
 const handleError = require('./handleError');
 
 const api = url => {

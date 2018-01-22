@@ -1,19 +1,14 @@
 const _ = require('lodash');
 const string = require('string');
+const shouldRandomlySave = require('./shouldRandomlySave');
 const { checkDirectory } = require('../helper/fileSystem');
 const getScript = require('../../getScript/getScript');
 const cleanArr = require('../../helper/cleanArr');
-const randomIntFromInterval = require('../../helper/randomIntFromInterval');
 
 const removeInvalidURLs = urls => {
 	return _.remove(urls, url => {
 		return string(url).contains('.html');
 	});
-};
-
-const shouldRandomlySave = () => {
-	const totalRandomNumber = randomIntFromInterval(0, 1000);
-	return totalRandomNumber % 17 === 0;
 };
 
 const addScriptsToDir = async (urls, options) => {
@@ -23,15 +18,15 @@ const addScriptsToDir = async (urls, options) => {
 
 	const cleaned = removeInvalidURLs(urls);
 	await checkDirectory(dest, genre);
-	console.log(cleaned);
 	// Loop through script URLs
 	const promiseArr = await cleaned.map(async url => {
 		if (totalCounter === total) return;
 
 		if (shouldRandomlySave()) {
 			++totalCounter;
-
+			console.log(url, 'url');
 			const filePath = await getScript(url, options);
+			console.log(filePath, 'filePath');
 
 			return filePath;
 		}

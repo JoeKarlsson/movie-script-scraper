@@ -14,11 +14,12 @@ const getScriptsByGenre = async options => {
 			const rawURLs = await api(url);
 			const urls = handleURLs(rawURLs);
 			const filePaths = await addScriptsToDir(urls, options);
-			// const cleanFilePaths = cleanArr(filePaths);
+			console.log(filePaths);
 			const prunedFilePaths = await removeExtraScripts(
 				filePaths,
 				options.total
 			);
+			console.log(prunedFilePaths);
 			return prunedFilePaths;
 		} catch (err) {
 			return handleError(err);

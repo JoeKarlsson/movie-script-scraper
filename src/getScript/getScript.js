@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const api = require('../helper/api');
 const handleError = require('../helper/handleError');
 const writeToFile = require('./helper/writeToFile');
+const isInvalidScript = require('./helper/isInvalidScript');
 
 const getCleanTitle = $ => {
 	let title = string($('title').text())
@@ -30,27 +31,22 @@ const extractPageContents = html => {
 	};
 };
 
-const invalidScript = script => {
-	// Return if no script (probably TV episode, slightly different URL)
-	if (script.length < 500) {
-		return true;
-	}
-	return false;
-};
-
 const getScript = async (url, options) => {
 	options.dest = options.dest || 'scripts';
 	const { dest, genre } = options;
 
 	try {
 		const rawScriptData = await api(url);
+		console.log(rawScriptData);
 		const { script, title } = extractPageContents(rawScriptData);
 
 		// Return if no script (probably TV episode, slightly different URL)
-		if (invalidScript(script, genre)) return false;
+		if (isInvalidScript(script, genre)) return false;
 
 		if (genre) {
 			const path = `${dest}/${genre}/${title}.txt`;
+			console.log(path);
+
 			return writeToFile(path, script, title);
 		}
 		const path = `scripts/${title}.txt`;

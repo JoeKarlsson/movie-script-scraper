@@ -20,7 +20,6 @@ describe('API', () => {
 
 			api(url)
 				.then(body => {
-					console.log(body);
 					expect(body).toEqual(mockData);
 				})
 				.catch(error => {
