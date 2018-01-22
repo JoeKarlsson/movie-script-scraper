@@ -1,34 +1,8 @@
-const string = require('string');
-const cheerio = require('cheerio');
-const api = require('../helper/api');
-const handleError = require('../helper/handleError');
 const writeToFile = require('./helper/writeToFile');
 const isInvalidScript = require('./helper/isInvalidScript');
-
-const getCleanTitle = page => {
-	let title = string(page('title').text())
-		.chompRight(' Script at IMSDb.')
-		.slugify().s;
-
-	const idx = title.indexOf('script-at-imsdb');
-	if (idx > 0) {
-		title = title.substring(0, idx - 1);
-	}
-	return title;
-};
-
-const extractPageContents = html => {
-	const $ = cheerio.load(html);
-	let script = $('table:nth-child(2)').text();
-
-	script = script.replace('Search IMSDb', '');
-
-	const title = getCleanTitle($);
-	return {
-		script,
-		title,
-	};
-};
+const extractPageContents = require('./helper/extractPageContents');
+const api = require('../helper/api');
+const handleError = require('../helper/handleError');
 
 const getScript = async (url, options) => {
 	options.dest = options.dest || 'scripts';
@@ -47,7 +21,7 @@ const getScript = async (url, options) => {
 			return writeToFile(path, script, title);
 		}
 		const path = `${dest}/${title}.txt`;
-		return writeToFile(path, rawScriptData, title);
+		return writeToFile(path, script, title);
 	} catch (e) {
 		return handleError(e);
 	}
