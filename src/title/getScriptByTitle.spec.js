@@ -8,9 +8,13 @@ describe('getScriptByTitle', () => {
 			title: 'hellboy',
 		};
 
-		const exectedResult = 'scripts/hellboy.txt';
-		getScriptByTitle(options).then(result => {
-			expect(result).toBe(exectedResult);
-		});
+		const exectedResult = 'scripts/frozen.txt';
+		getScriptByTitle(options)
+			.then(result => {
+				expect(result).toBe(exectedResult);
+			})
+			.catch(e => {
+				console.error(e);
+			});
 	});
 });

@@ -11,38 +11,13 @@ describe('addScriptsToDir', () => {
 			dest: 'scripts',
 			total: 10,
 		};
-		const expectedResult = [
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-			'scripts/hellboy.txt',
-		];
-		addScriptsToDir(mocksUrls, options).then(result => {
-			expect(result).toMatchObject(expectedResult);
-		});
+		const expectedResult = ['scripts/frozen.txt'];
+		addScriptsToDir(mocksUrls, options)
+			.then(result => {
+				expect(result).toMatchObject(expectedResult);
+			})
+			.catch(e => {
+				console.error(e);
+			});
 	});
 });

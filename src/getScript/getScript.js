@@ -36,8 +36,8 @@ const getScript = async (url, options) => {
 
 	try {
 		const rawScriptData = await api(url);
-		console.log(rawScriptData);
 		const { script, title } = extractPageContents(rawScriptData);
+		// writeToFile('rawData', rawScriptData, title);
 
 		// Return if no script (probably TV episode, slightly different URL)
 		if (isInvalidScript(script, genre)) return false;
@@ -48,8 +48,8 @@ const getScript = async (url, options) => {
 
 			return writeToFile(path, script, title);
 		}
-		const path = `scripts/${title}.txt`;
-		return writeToFile(path, script, title);
+		const path = `${dest}/${title}.txt`;
+		return writeToFile(path, rawScriptData, title);
 	} catch (e) {
 		return handleError(e);
 	}
