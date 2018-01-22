@@ -1,22 +1,9 @@
 const string = require('string');
-const fs = require('fs');
-const util = require('util');
 const cheerio = require('cheerio');
-const api = require('./api');
-const handleError = require('./helper/handleError');
-
-const writeFile = util.promisify(fs.writeFile);
-
-const writeToFile = (path, script, title) => {
-	return writeFile(path, script)
-		.then(() => {
-			console.log(`Saved ${title}`);
-			return path;
-		})
-		.catch(err => {
-			return handleError(err);
-		});
-};
+const api = require('../helper/api');
+const handleError = require('../helper/handleError');
+const writeToFile = require('./helper/writeToFile');
+const isInvalidScript = require('./helper/isInvalidScript');
 
 const getCleanTitle = page => {
 	let title = string(page('title').text())
@@ -43,26 +30,22 @@ const extractPageContents = html => {
 	};
 };
 
-const invalidScript = (script, genre) => {
-	// Return if no script (probably TV episode, slightly different URL)
-	if (script.length < 500 && !genre) {
-		return true;
-	}
-	return false;
-};
+const getScript = async (url, options) => {
+	options.dest = options.dest || 'scripts';
+	const { dest, genre } = options;
 
-const getScript = async (scriptURL, dest = 'scripts', genre = null) => {
 	try {
-		const rawScriptData = await api(scriptURL);
+		const rawScriptData = await api(url);
+		console.log(rawScriptData);
 		const { script, title } = extractPageContents(rawScriptData);
 
 		// Return if no script (probably TV episode, slightly different URL)
-		if (invalidScript(script, genre)) {
-			return handleError('Script not found');
-		}
+		if (isInvalidScript(script, genre)) return false;
 
 		if (genre) {
 			const path = `${dest}/${genre}/${title}.txt`;
+			console.log(path);
+
 			return writeToFile(path, script, title);
 		}
 		const path = `scripts/${title}.txt`;

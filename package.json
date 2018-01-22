@@ -1,15 +1,43 @@
 {
-  "name": "mss",
-  "description": "Simple movie scripts scrapper.",
-  "version": "0.0.1",
-  "author": "Joe Karlsson and Tim Kendall",
+  "name": "movie-script-scraper",
+  "description": "A simple scraper to retrieve movie scripts by genre or title from IMSDB.",
+  "version": "0.0.5",
+  "homepage": "https://github.com/JoeKarlsson/movie-script-scraper",
+  "keywords": [
+    "movie script scraper",
+    "movie",
+    "film",
+    "scraper",
+    "imscb",
+    "script sraper",
+    "screenplay"
+  ],
+  "author": {
+    "name": "Joe Karlsson",
+    "email": "joekarlsson1@gmail.com"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joekarlsson/mss.git"
+    "url": "https://github.com/JoeKarlsson/movie-script-scrapper.git"
   },
+  "bugs": {
+    "url": "https://github.com/JoeKarlsson/movie-script-scraper/issues"
+  },
+  "license": "MIT",
+  "main": "src/mss",
   "scripts": {
     "start": "node src/app",
-    "lint": "eslint src"
+    "start:title": "node src/app --title 'frozen'",
+    "test": "jest --coverage",
+    "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
+    "test:watch": "jest --watch",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src",
+    "healthcheck": "npm run lint && npm run test:coverage",
+    "precommit": "npm run lint",
+    "prepush": "npm prune && npm run healthcheck",
+    "postmerge": "npm install"
   },
   "dependencies": {
     "cheerio": "latest",
@@ -21,12 +49,17 @@
     "string": "^3.3.3"
   },
   "devDependencies": {
-    "eslint": "^4.15.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.4.0",
+    "fetch-mock": "^6.0.0-beta.9",
+    "husky": "^0.14.3",
+    "jest": "^22.1.4",
+    "nyc": "^11.4.1",
     "prettier": "^1.10.2"
   }
 }

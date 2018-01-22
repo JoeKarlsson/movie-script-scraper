@@ -1,31 +1,34 @@
-# MSS
+# Movie Script Scraper
 
 [![deps][deps]][deps-url]
+[![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scrapper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scrapper?branch=master)
+[![Build Status](https://travis-ci.org/JoeKarlsson/movie-script-scraper.svg?branch=master)](https://travis-ci.org/JoeKarlsson/movie-script-scraper)
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
 [![license][license]][license-url]
 [![twitter][twitter]][twitter-url]
 [![snyk][snyk]][snyk-url]
-[![greenkeeper][greenkeeper]][greenkeeper-url]
 [![bch compliance][bchcompliance]][bchcompliance-url]
-[![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scrapper/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scraper/maintainability)
 
-A simple scrapper to retrieve scripts by genre from IMSDB.
+[![NPM](https://nodei.co/npm/movie-script-scraper.png)](https://npmjs.org/package/movie-script-scraper)
+
+A simple scraper to retrieve movie scripts by genre or title from [IMSDB](http://www.imsdb.com/).
 
 # Installation
 
 ```bash
-$ npm install -S mss
+npm install -S movie-script-scraper
 ```
 
 # Usage
 
 ## Example Usage
 
-**MSS** exposes a function; simply pass this function the options (see below), and it will return a promise with an array of the file paths of the scripts it saved.
+**Movie Script Scraper** exposes a function; simply pass this function the options ([see below](https://github.com/JoeKarlsson/movie-script-scraper#options)), and it will return a promise with an array of the file paths of the scripts it saved.
 
 ```javascript
-const mss = require('mss');
+const mss = require('movie-script-scraper');
 
 const options = {
 	genre: 'Action',
@@ -43,7 +46,7 @@ mss(options)
 
 ### Options
 
-* `genre` [__string__] - Any valid film genre, a complete list can be found [here](https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/src/helper/isValidGenre.js).
+* `genre` [__string__] - Any valid film genre, a complete list can be found [here](https://github.com/JoeKarlsson/movie-script-scraper/blob/master/src/helper/isValidGenre.js).
   * Defaults to "Action".
 * `total` [__number__] - the total number of scripts you want from a given genre.
   * Defaults to 10.
@@ -53,16 +56,16 @@ mss(options)
 
 ## Running from command line
 
-You can run MSS directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g mss`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scrapper#options).
+You can run the Movie Script Scraper directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g movie-script-scraper`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scraper#options).
 
 ```bash
-$ mss --total 10 --genre Comedy
+movie-script-scraper  --total 10 --genre Comedy
 ```
 
 or enter a title:
 
 ```bash
-$ mss --title 'american sniper'
+movie-script-scraper  --title 'american sniper'
 ```
 
 # How it Works
@@ -74,16 +77,20 @@ Conveniently IMSDB provides RSS feeds based on movie genre (ex. <http://www.imsd
 1. Install dependencies with:
 
 ```bash
-$ npm install -S mss
+npm install
 ```
 
-1. Run Tests
+2. Run Tests
 
 ```bash
-$ npm test
+npm test
 ```
 
 ## Contributing
+
+Don't hesitate to create a pull request. Every contribution is appreciated. In development you can start the tests by calling `npm test`. Checkout our [contribution README](https://github.com/JoeKarlsson/movie-script-scraper/blob/master/CONTRIBUTING.md) for more info.
+
+TLDR;
 
 1. Fork it!
 1. Create your feature branch: `git checkout -b my-new-feature`
@@ -110,19 +117,17 @@ $ npm test
 
 #### [MIT](./LICENSE)
 
-[deps]: https://david-dm.org/JoeKarlsson/movie-script-scrapper/status.svg
-[deps-url]: https://david-dm.org/JoeKarlsson/movie-script-scrapper
+[deps]: https://david-dm.org/JoeKarlsson/movie-script-scraper/status.svg
+[deps-url]: https://david-dm.org/JoeKarlsson/movie-script-scraper
 [pr]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [pr-url]: CONTRIBUTING.md
-[stars]: https://img.shields.io/github/stars/JoeKarlsson/movie-script-scrapper.svg?style=flat-square
-[stars-url]: https://github.com/JoeKarlsson/movie-script-scrapper/stargazers
-[license]: https://img.shields.io/github/license/JoeKarlsson/movie-script-scrapper.svg
-[license-url]: https://github.com/JoeKarlsson/movie-script-scrapper/blob/master/LICENSE
-[twitter]: https://img.shields.io/twitter/url/https/github.com/JoeKarlsson/movie-script-scrapper.svg?style=social&style=flat-square
-[twitter-url]: https://twitter.com/intent/tweet?text=Movie%20Site%20Scrapper:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scrapper
-[greenkeeper]: https://badges.greenkeeper.io/JoeKarlsson/movie-script-scrapper.svg
-[greenkeeper-url]: https://greenkeeper.io/
-[snyk]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper/badge.svg
-[snyk-url]: https://snyk.io/test/github/joekarlsson/movie-script-scrapper
-[bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scrapper?branch=master
+[stars]: https://img.shields.io/github/stars/JoeKarlsson/movie-script-scraper.svg?style=flat-square
+[stars-url]: https://github.com/JoeKarlsson/movie-script-scraper/stargazers
+[license]: https://img.shields.io/github/license/JoeKarlsson/movie-script-scraper.svg
+[license-url]: https://github.com/JoeKarlsson/movie-script-scraper/blob/master/LICENSE
+[twitter]: https://img.shields.io/twitter/url/https/github.com/JoeKarlsson/movie-script-scraper.svg?style=social&style=flat-square
+[twitter-url]: https://twitter.com/intent/tweet?text=Movie%20Site%20Scrapper:&url=https%3A%2F%2Fgithub.com%2FJoeKarlsson%2Fmovie-script-scraper
+[snyk]: https://snyk.io/test/github/joekarlsson/movie-script-scraper/badge.svg
+[snyk-url]: https://snyk.io/test/github/joekarlsson/movie-script-scraper
+[bchcompliance]: https://bettercodehub.com/edge/badge/JoeKarlsson/movie-script-scraper?branch=master
 [bchcompliance-url]: https://bettercodehub.com/

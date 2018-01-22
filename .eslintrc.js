@@ -22,5 +22,12 @@ module.exports = {
 		node: true,
 		jest: true,
 	},
+	env: {
+		browser: true,
+		node: true,
+		jest: true,
+		mocha: true,
+		mongo: true,
+	},
 	plugins: ['import', 'prettier'],
 };
