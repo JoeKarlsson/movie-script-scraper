@@ -1,7 +1,7 @@
 # Movie Script Scraper
 
 [![deps][deps]][deps-url]
-[![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scrapper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scrapper?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scraper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scraper?branch=master)
 [![Build Status](https://travis-ci.org/JoeKarlsson/movie-script-scraper.svg?branch=master)](https://travis-ci.org/JoeKarlsson/movie-script-scraper)
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
