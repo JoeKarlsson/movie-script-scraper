@@ -18,8 +18,8 @@ const writeToFile = (path, script, title) => {
 		});
 };
 
-const getCleanTitle = $ => {
-	let title = string($('title').text())
+const getCleanTitle = page => {
+	let title = string(page('title').text())
 		.chompRight(' Script at IMSDb.')
 		.slugify().s;
 
@@ -32,7 +32,6 @@ const getCleanTitle = $ => {
 
 const extractPageContents = html => {
 	const $ = cheerio.load(html);
-
 	let script = $('table:nth-child(2)').text();
 
 	script = script.replace('Search IMSDb', '');
