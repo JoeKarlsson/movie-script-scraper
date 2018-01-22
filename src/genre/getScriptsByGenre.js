@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const string = require('string');
 const { checkDirectory, removeExtraScripts } = require('./helper/fileSystem');
+const handleURLs = require('./helper/handleURLs');
 const api = require('../helper/api');
 const getScript = require('../getScript/getScript');
 const randomIntFromInterval = require('../helper/randomIntFromInterval');
@@ -43,20 +44,6 @@ const addScriptsToDir = async (urls, options) => {
 	return Promise.all(promiseArr).then(data => {
 		return data;
 	});
-};
-
-const isValid = urls => {
-	return urls.length === 0;
-};
-
-const handleURLs = html => {
-	// RegEx URLs
-	const pattern = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/gi; // eslint-disable-line no-useless-escape
-	const urls = html.match(pattern) || [];
-
-	if (isValid(urls)) return null;
-
-	return urls;
 };
 
 const getScriptsByGenre = async options => {
