@@ -1,45 +1,106 @@
-// const getScriptsByGenre = require('./genre/getScriptsByGenre');
-// const getScriptByTitle = require('./title/getScriptByTitle');
-// const cleanArr = require('./helper/cleanArr');
-// const handleError = require('./helper/handleError');
-//
-// const setDefaults = options => {
-// 	options.genre = options.genre || 'Action';
-// 	options.dest = options.dest || 'scripts';
-// 	options.total = options.total || 10;
-//
-// 	return options;
-// };
-//
-// const mss = async options => {
-// 	try {
-// 		let filePaths;
-// 		const { genre, title } = options;
-// 		options.dest = options.dest || 'scripts';
-// 		options.total = options.total || 10;
-//
-// 		if (genre) {
-// 			filePaths = await getScriptsByGenre(options);
-// 			filePaths = cleanArr(filePaths);
-// 		} else if (title) {
-// 			filePaths = await getScriptByTitle(options);
-// 		} else {
-// 			setDefaults(options);
-// 			filePaths = await getScriptsByGenre(options);
-// 			filePaths = cleanArr(filePaths);
-// 		}
-// 		return filePaths;
-// 	} catch (e) {
-// 		handleError(e);
-// 	}
-// };
-//
-// module.exports = mss;
+const mss = require('./mss');
+const fs = require('fs');
+const fetchMock = require('fetch-mock');
+const mocksUrls = require('./genre/helper/__mocks__/data/mock-urls.json');
 
-// const mss = require('./mss');
+jest.unmock('./getScript/getScript');
+jest.mock('./getScript/helper/writeToFile');
+jest.mock('./getScript/helper/isInvalidScript');
+jest.mock('./genre/helper/shouldRandomlySave');
+jest.mock('./genre/helper/fileSystem');
 
-describe('mss', () => {
-	it('should return an array of filePaths ', () => {
-		// expect(mss(title)).toBe(expectedResult);
+const mockData = fs.readFileSync(
+	'src/genre/helper/__mocks__/data/mock_genre_data.xml',
+	{
+		encoding: 'utf-8',
+	}
+);
+
+const mockRawData = fs.readFileSync(
+	'src/genre/helper/__mocks__/data/mock_raw_data_1.txt',
+	{
+		encoding: 'utf-8',
+	}
+);
+
+describe('Movie Script Scraper', () => {
+	beforeEach(() => {
+		fetchMock.reset();
+	});
+
+	it('should return an array of filePaths from newly created scripts - genre', () => {
+		const genre = 'Action';
+		const genreUrl = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
+		fetchMock.mock(genreUrl, mockData);
+		mocksUrls.forEach((url, i) => {
+			fetchMock.mock(mocksUrls[i], mockRawData);
+		});
+
+		const options = {
+			genre: 'Action',
+			total: 1,
+			dest: 'scripts',
+		};
+
+		const expectedResult = [
+			'scripts/hellboy.txt',
+			'scripts/frozen.txt',
+			'scripts/x-men.txt',
+			'scripts/american-sniper.txt',
+		];
+
+		mss(options)
+			.then(result => {
+				expect(result).toMatchObject(expectedResult);
+			})
+			.catch(e => {
+				console.error(e);
+			});
+	});
+
+	it('should return an array of filePaths from newly created scripts - title', () => {
+		// const url = 'http://www.imsdb.com/scripts/Frozen.html';
+		// fetchMock.mock(url, mockData);
+
+		const options = {
+			title: 'frozen',
+			dest: 'scripts',
+		};
+
+		const expectedResult = 'scripts/frozen.txt';
+
+		mss(options)
+			.then(result => {
+				expect(result).toBe(expectedResult);
+			})
+			.catch(e => {
+				console.error(e);
+			});
+	});
+
+	it('should return an array of filePaths from newly created scripts - default', () => {
+		// const genre = 'Action';
+		// const genreUrl = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
+		// fetchMock.mock(genreUrl, mockData);
+		// mocksUrls.forEach((url, i) => {
+		// 	fetchMock.mock(mocksUrls[i], mockRawData);
+		// });
+
+		const options = {};
+
+		const expectedResult = [
+			'scripts/hellboy.txt',
+			'scripts/frozen.txt',
+			'scripts/x-men.txt',
+			'scripts/american-sniper.txt',
+		];
+
+		mss(options)
+			.then(result => {
+				expect(result).toMatchObject(expectedResult);
+			})
+			.catch(e => {
+				console.error(e);
+			});
 	});
 });
