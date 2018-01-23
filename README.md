@@ -3,13 +3,17 @@
 [![deps][deps]][deps-url]
 [![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scraper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scraper?branch=master)
 [![Build Status](https://travis-ci.org/JoeKarlsson/movie-script-scraper.svg?branch=master)](https://travis-ci.org/JoeKarlsson/movie-script-scraper)
+[![snyk][snyk]][snyk-url]
+[![bch compliance][bchcompliance]][bchcompliance-url]
+[![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scraper/maintainability)
+[![bitHound Overall Score](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/score.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/devDependencies.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/master/dependencies/npm)
+[![bitHound Code](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/code.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper)
+[![npm version](https://badge.fury.io/js/movie-script-scraper.svg)](https://badge.fury.io/js/movie-script-scraper)
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
 [![license][license]][license-url]
 [![twitter][twitter]][twitter-url]
-[![snyk][snyk]][snyk-url]
-[![bch compliance][bchcompliance]][bchcompliance-url]
-[![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scraper/maintainability)
 
 [![NPM](https://nodei.co/npm/movie-script-scraper.png)](https://npmjs.org/package/movie-script-scraper)
 

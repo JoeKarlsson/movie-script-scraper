@@ -1,6 +1,6 @@
 const getScript = () => {
 	return new Promise(resolve => {
-		const filePath = 'scripts/hellboy.txt';
+		const filePath = 'scripts/frozen.txt';
 		resolve(filePath);
 	});
 };
