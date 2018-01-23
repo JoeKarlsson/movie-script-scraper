@@ -1,6 +1,7 @@
 const { checkDirectory, removeExtraScripts } = require('./fileSystem');
 
 jest.mock('fs');
+jest.mock('../../helper/randomIntFromInterval');
 
 describe('fileSystem', () => {
 	describe('checkDirectory', () => {
@@ -15,7 +16,7 @@ describe('fileSystem', () => {
 			const filePaths = ['script 1', 'script 2', 'script 3', 'script 4'];
 			const total = 3;
 
-			const expectedResult = ['script 2', 'script 3', 'script 4'];
+			const expectedResult = ['script 1', 'script 3', 'script 4'];
 
 			removeExtraScripts(filePaths, total).then(result => {
 				expect(result).toMatchObject(expectedResult);

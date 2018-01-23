@@ -2,6 +2,8 @@ const fetchMock = require('fetch-mock');
 const fs = require('fs');
 const api = require('./api');
 
+jest.mock('./handleError');
+
 const mockData = fs.readFileSync('src/helper/__mocks__/mock_genre_data.xml', {
 	encoding: 'utf-8',
 });
@@ -26,5 +28,17 @@ describe('API', () => {
 					throw new Error(error);
 				});
 		});
+
+		// it('should throw an error when invalid error input', () => {
+		// 	const url = '/';
+		//
+		// 	api(url)
+		// 		.then(body => {
+		// 			expect(body).toEqual(mockData);
+		// 		})
+		// 		.catch(error => {
+		// 			throw new Error(error);
+		// 		});
+		// });
 	});
 });

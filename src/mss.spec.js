@@ -59,9 +59,6 @@ describe('Movie Script Scraper', () => {
 	});
 
 	it('should return an array of filePaths from newly created scripts - title', () => {
-		// const url = 'http://www.imsdb.com/scripts/Frozen.html';
-		// fetchMock.mock(url, mockData);
-
 		const options = {
 			title: 'frozen',
 			dest: 'scripts',
@@ -79,13 +76,6 @@ describe('Movie Script Scraper', () => {
 	});
 
 	it('should return an array of filePaths from newly created scripts - default', () => {
-		// const genre = 'Action';
-		// const genreUrl = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
-		// fetchMock.mock(genreUrl, mockData);
-		// mocksUrls.forEach((url, i) => {
-		// 	fetchMock.mock(mocksUrls[i], mockRawData);
-		// });
-
 		const options = {};
 
 		const expectedResult = [
