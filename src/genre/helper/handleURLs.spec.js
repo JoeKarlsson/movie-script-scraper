@@ -14,4 +14,9 @@ describe('handleURLs', () => {
 		const result = handleURLs(mockData);
 		expect(result).toMatchObject(mocksUrls);
 	});
+
+	it('should return null if invalid data is passed through', () => {
+		const result = handleURLs('TEST DATA');
+		expect(result).toBe(null);
+	});
 });
