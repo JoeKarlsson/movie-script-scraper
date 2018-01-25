@@ -1,4 +1,9 @@
-# Movie Script Scraper
+<p align="center">
+	<img width=100% src="https://user-images.githubusercontent.com/4650739/35399428-ccd8dc4c-01b9-11e8-9722-25c51f4c630e.png" />
+
+</p>
+
+<h1 align="center">Movie Script Scraper</h1>
 
 [![deps][deps]][deps-url]
 [![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scraper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scraper?branch=master)
