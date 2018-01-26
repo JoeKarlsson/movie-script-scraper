@@ -9,6 +9,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/JoeKarlsson/movie-script-scraper/badge.svg?branch=master)](https://coveralls.io/github/JoeKarlsson/movie-script-scraper?branch=master)
 [![Build Status](https://travis-ci.org/JoeKarlsson/movie-script-scraper.svg?branch=master)](https://travis-ci.org/JoeKarlsson/movie-script-scraper)
 [![snyk][snyk]][snyk-url]
+[![Package Quality](http://npm.packagequality.com/badge/movie-script-scraper.png)](http://packagequality.com/#?package=movie-script-scraper)
 [![bch compliance][bchcompliance]][bchcompliance-url]
 [![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scraper/maintainability)
 [![bitHound Overall Score](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/score.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper)
