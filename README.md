@@ -14,13 +14,12 @@
 [![bitHound Overall Score](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/score.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/devDependencies.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/code.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper)
+[![Package Quality](http://npm.packagequality.com/shield/movie-script-scraper.svg)](http://packagequality.com/#?package=movie-script-scraper)
 [![npm version](https://badge.fury.io/js/movie-script-scraper.svg)](https://badge.fury.io/js/movie-script-scraper)
 [![stars][stars]][stars-url]
 [![pr][pr]][pr-url]
 [![license][license]][license-url]
 [![twitter][twitter]][twitter-url]
-
-[![Package Quality](http://npm.packagequality.com/badge/movie-script-scraper.png)](http://packagequality.com/#?package=movie-script-scraper)
 
 [![NPM](https://nodei.co/npm/movie-script-scraper.png)](https://npmjs.org/package/movie-script-scraper)
 
