@@ -1,7 +1,7 @@
 {
   "name": "movie-script-scraper",
   "description": "A simple scraper to retrieve movie scripts by genre or title from IMSDB.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/JoeKarlsson/movie-script-scraper",
   "keywords": [
     "movie script scraper",
