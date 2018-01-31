@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JoeKarlsson/movie-script-scrapper.git"
+    "url": "https://github.com/JoeKarlsson/movie-script-scraper.git"
   },
   "bugs": {
     "url": "https://github.com/JoeKarlsson/movie-script-scraper/issues"
@@ -40,26 +40,25 @@
     "postmerge": "npm install"
   },
   "dependencies": {
-    "cheerio": "latest",
-    "es6-promise": "^4.2.2",
-    "isomorphic-fetch": "^2.2.1",
-    "lodash": "latest",
-    "minimist": "^1.2.0",
-    "mkdirp": "^0.5.1",
-    "string": "^3.3.3"
+    "cheerio": "1.0.0-rc.2",
+    "isomorphic-fetch": "2.2.1",
+    "lodash": "4.17.4",
+    "minimist": "1.2.0",
+    "mkdirp": "0.5.1",
+    "string": "3.3.3"
   },
   "devDependencies": {
-    "coveralls": "^3.0.0",
-    "eslint": "^4.16.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "^2.4.0",
-    "fetch-mock": "^6.0.0-beta.9",
-    "husky": "^0.14.3",
-    "jest": "^22.1.4",
-    "nyc": "^11.4.1",
-    "prettier": "^1.10.2"
+    "coveralls": "3.0.0",
+    "eslint": "4.16.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-prettier": "2.4.0",
+    "fetch-mock": "6.0.0-beta.9",
+    "husky": "0.14.3",
+    "jest": "22.1.4",
+    "nyc": "11.4.1",
+    "prettier": "1.10.2"
   }
 }
