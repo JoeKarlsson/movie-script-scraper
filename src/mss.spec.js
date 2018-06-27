@@ -1,6 +1,6 @@
-const mss = require('./mss');
 const fs = require('fs');
 const fetchMock = require('fetch-mock');
+const mss = require('./mss');
 const mocksUrls = require('./genre/helper/__mocks__/data/mock-urls.json');
 
 jest.unmock('./getScript/getScript');
