@@ -11,9 +11,6 @@
 [![snyk][snyk]][snyk-url]
 [![bch compliance][bchcompliance]][bchcompliance-url]
 [![Maintainability](https://api.codeclimate.com/v1/badges/516ac255b87a71d5fd91/maintainability)](https://codeclimate.com/github/JoeKarlsson/movie-script-scraper/maintainability)
-[![bitHound Overall Score](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/score.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper)
-[![bitHound Dev Dependencies](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/devDependencies.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/master/dependencies/npm)
-[![bitHound Code](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper/badges/code.svg)](https://www.bithound.io/github/JoeKarlsson/movie-script-scraper)
 [![Package Quality](http://npm.packagequality.com/shield/movie-script-scraper.svg)](http://packagequality.com/#?package=movie-script-scraper)
 [![npm version](https://badge.fury.io/js/movie-script-scraper.svg)](https://badge.fury.io/js/movie-script-scraper)
 [![stars][stars]][stars-url]
