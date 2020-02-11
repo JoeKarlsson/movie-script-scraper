@@ -28,17 +28,5 @@ describe('API', () => {
 					throw new Error(error);
 				});
 		});
-
-		// it('should throw an error when invalid error input', () => {
-		// 	const url = '/';
-		//
-		// 	api(url)
-		// 		.then(body => {
-		// 			expect(body).toEqual(mockData);
-		// 		})
-		// 		.catch(error => {
-		// 			throw new Error(error);
-		// 		});
-		// });
 	});
 });

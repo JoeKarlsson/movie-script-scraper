@@ -18,7 +18,7 @@ const mockScript = fs.readFileSync(
 describe('extractPageContents', () => {
 	it('should extract the title of the script', () => {
 		const result = extractPageContents(mockRawHTML);
-		expect(result.title).toBe('frozen');
+		expect(result).toBe('frozen');
 	});
 
 	it('should extract the script from the raw HTML', () => {
