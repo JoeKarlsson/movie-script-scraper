@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
@@ -66,27 +66,3 @@ jobs:
       
     - name: Run dependency check
       run: npm audit --audit-level=high
-      
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [test, security]
-    if: github.ref == 'refs/heads/main'
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
-        cache: 'npm'
-        
-    - name: Install dependencies
-      run: npm ci
-      
-    - name: Run final tests
-      run: npm run healthcheck
-      
-    - name: Deploy to production
-      run: echo "Deployment would happen here"
