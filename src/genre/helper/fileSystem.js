@@ -1,26 +1,26 @@
 const util = require('util');
 const fs = require('fs');
-const mkdirp = require('mkdirp');
+const { mkdirp } = require('mkdirp');
 const randomIntFromInterval = require('../../helper/randomIntFromInterval');
 const handleError = require('../../helper/handleError');
 
 const stat = util.promisify(fs.stat);
 const unlink = util.promisify(fs.unlink);
 
-const checkDirectory = (dest, genre) => {
+const checkDirectory = async (dest, genre) => {
 	// Create directory if it doesn't exist
-	return stat(`${dest}/${genre}/`)
-		.then(() => {
+	try {
+		await stat(`${dest}/${genre}/`);
+		return true;
+	} catch (error) {
+		try {
+			await mkdirp(`${dest}/${genre}/`);
 			return true;
-		})
-		.catch(() => {
-			return mkdirp(`${dest}/${genre}/`, err => {
-				if (err) {
-					return handleError(`Failed to make directory for ${genre}`);
-				}
-				return true;
-			});
-		});
+		} catch (err) {
+			handleError(`Failed to make directory for ${genre}`);
+			return false;
+		}
+	}
 };
 
 const removeExtraScripts = (filePaths, total) => {

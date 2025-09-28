@@ -1,10 +1,20 @@
-const string = require('string');
 const cheerio = require('cheerio');
 
 const title = page => {
-	let title = string(page('title').text())
-		.chompRight(' Script at IMSDb.')
-		.slugify().s;
+	let titleText = page('title').text();
+
+	// Remove ' Script at IMSDb.' suffix
+	if (titleText.endsWith(' Script at IMSDb.')) {
+		titleText = titleText.slice(0, -' Script at IMSDb.'.length);
+	}
+
+	// Convert to slug format
+	let title = titleText
+		.toLowerCase()
+		.replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+		.replace(/\s+/g, '-') // Replace spaces with hyphens
+		.replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+		.replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 
 	const idx = title.indexOf('script-at-imsdb');
 	if (idx > 0) {

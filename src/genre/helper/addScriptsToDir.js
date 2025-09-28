@@ -1,14 +1,13 @@
 const _ = require('lodash');
-const string = require('string');
 const shouldRandomlySave = require('./shouldRandomlySave');
-const { checkDirectory } = require('../helper/fileSystem');
+const { checkDirectory } = require('./fileSystem');
 const getScript = require('../../getScript/getScript');
 const cleanArr = require('../../helper/cleanArr');
 const handleError = require('../../helper/handleError');
 
 const removeInvalidURLs = urls => {
 	return _.remove(urls, url => {
-		return string(url).contains('.html');
+		return url.includes('.html');
 	});
 };
 
