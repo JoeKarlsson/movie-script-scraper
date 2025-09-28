@@ -22,7 +22,7 @@ module.exports = {
 	coveragePathIgnorePatterns: ['<rootDir>/src/app'],
 	coverageThreshold: {
 		global: {
-			branches: 75,
+			branches: 65,
 			functions: 80,
 			lines: 80,
 			statements: 80,

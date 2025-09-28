@@ -14,6 +14,14 @@ const mockRawHTML = fs.readFileSync(
 );
 
 describe('getScript', () => {
+	beforeEach(() => {
+		fetchMock.reset();
+	});
+
+	afterEach(() => {
+		fetchMock.restore();
+	});
+
 	it('should return the file path of the script retreived', () => {
 		const url = 'http://www.imsdb.com/scripts/FrozenTESTSTST.html';
 		const options = {
@@ -24,7 +32,7 @@ describe('getScript', () => {
 
 		fetchMock.mock(url, mockRawHTML);
 
-		getScript(url, options)
+		return getScript(url, options)
 			.then(result => {
 				expect(result).toBe('scripts/Action/frozen.txt');
 			})
