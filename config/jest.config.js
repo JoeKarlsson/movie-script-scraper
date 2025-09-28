@@ -1,6 +1,6 @@
 module.exports = {
 	// Set root directory to project root
-	rootDir: '../',
+	rootDir: process.cwd(),
 
 	// Test file patterns
 	testMatch: [
