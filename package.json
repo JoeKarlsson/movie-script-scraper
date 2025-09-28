@@ -43,7 +43,7 @@
     "test": "jest --config=config/jest.config.js --coverage",
     "test:unit": "jest --config=config/jest.config.js tests/unit --coverage",
     "test:integration": "jest --config=config/jest.config.js tests/integration --coverage",
-    "test:e2e": "jest --config=config/jest.config.js tests/e2e --coverage --passWithNoTests",
+    "test:e2e": "jest --config=config/jest.config.js tests/e2e --coverage",
     "test:watch": "jest --config=config/jest.config.js --watch",
     "test:updateSnapshot": "jest --config=config/jest.config.js --updateSnapshot",
     "test:coverage": "jest --config=config/jest.config.js --coverage",

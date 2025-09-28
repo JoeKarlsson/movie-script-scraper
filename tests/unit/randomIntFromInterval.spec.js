@@ -9,7 +9,7 @@ describe('randomIntFromInterval', () => {
 		const result = randomIntFromInterval(0, 1000);
 
 		expect(typeof result).toBe('number');
-		expect(result > 0).toBe(true);
-		expect(result < 1000).toBe(true);
+		expect(result >= 0).toBe(true);
+		expect(result <= 1000).toBe(true);
 	});
 });
