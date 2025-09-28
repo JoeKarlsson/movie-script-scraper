@@ -26,7 +26,7 @@ const handleError = require('./handleError');
  * 3. Handles any errors that occur during the request
  * 
  * @example
- * const data = await api('http://www.imsdb.com/feeds/genre.php?genre=Action');
+ * const data = await api('https://www.imsdb.com/feeds/genre.php?genre=Action');
  * console.log(data); // XML data containing script URLs
  */
 const api = url => {

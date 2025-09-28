@@ -7,7 +7,8 @@ const handleError = require('../../helper/handleError');
 
 const removeInvalidURLs = urls => {
 	return _.remove(urls, url => {
-		return url.includes('.html');
+		// Remove URLs that don't contain .html (invalid) or are not script URLs
+		return !url.includes('.html') || !url.includes('Script.html');
 	});
 };
 

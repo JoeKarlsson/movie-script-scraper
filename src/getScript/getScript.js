@@ -9,7 +9,7 @@ const getScript = async (url, options) => {
 	const { dest, genre } = options;
 	try {
 		const rawScriptData = await api(url);
-		const { script, title } = extractPageContents(rawScriptData);
+		const { script, title } = extractPageContents(rawScriptData, url);
 
 		// Return if no script (probably TV episode, slightly different URL)
 		if (isInvalidScript(script, genre)) return false;

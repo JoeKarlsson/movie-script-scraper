@@ -47,7 +47,7 @@ const getScriptsByGenre = async options => {
 		try {
 			// Construct the IMSDB genre feed URL
 			// This endpoint returns XML data containing script URLs for the specified genre
-			const url = `http://www.imsdb.com/feeds/genre.php?genre=${genre}`;
+			const url = `https://imsdb.com/genre/${genre}`;
 
 			// Fetch the raw genre data from IMSDB
 			const rawURLs = await api(url);

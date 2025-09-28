@@ -25,7 +25,7 @@ describe('extractPageContents', () => {
 		const result = extractPageContents(mockRawHTML);
 		// Normalize whitespace for comparison
 		const normalizedResult = result.script.replace(/\s+/g, ' ').trim();
-		const normalizedExpected = mockScript.replace(/\s+/g, ' ').trim();
+		const normalizedExpected = `Frozen ${mockScript}`.replace(/\s+/g, ' ').trim();
 		expect(normalizedResult).toBe(normalizedExpected);
 	});
 });

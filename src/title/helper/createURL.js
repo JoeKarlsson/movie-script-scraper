@@ -10,7 +10,7 @@ const createURL = title => {
 		.map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Title case each word
 		.join('-');
 
-	return `http://www.imsdb.com/scripts/${urlTitle}.html`;
+	return `https://imsdb.com/Movie Scripts/${urlTitle} Script.html`;
 };
 
 module.exports = createURL;

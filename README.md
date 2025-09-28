@@ -19,7 +19,7 @@
 [![ESLint][eslint]][eslint-url]
 [![Prettier][prettier]][prettier-url]
 [![Dependencies][dependencies]][dependencies-url]
-[![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
+
 [![Last Commit][last-commit]][last-commit-url]
 [![GitHub Issues][github-issues]][github-issues-url]
 [![Contributors][contributors]][contributors-url]
