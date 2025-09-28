@@ -279,11 +279,11 @@ describe('Movie Script Scraper Integration Tests', () => {
             await mss(options);
 
             const actionDir = path.join(testDir, 'Action');
-            
+
             // Check if directory exists and has files
             if (fs.existsSync(actionDir)) {
                 const files = fs.readdirSync(actionDir);
-                
+
                 if (files.length > 0) {
                     const scriptFile = path.join(actionDir, files[0]);
                     const content = fs.readFileSync(scriptFile, 'utf8');
