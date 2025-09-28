@@ -13,20 +13,37 @@ describe('fileSystem', () => {
 		});
 	});
 	describe('removeExtraScripts', () => {
-		it('should return correct number of scripts when removing extras', () => {
-			// Mock the random function to return predictable values
-			randomIntFromInterval.mockReturnValue(1); // This will remove index 1 (script 2)
-
+		it('should return correct number of scripts when removing extras', async () => {
 			const filePaths = ['script 1', 'script 2', 'script 3', 'script 4'];
 			const total = 3;
 
-			removeExtraScripts(filePaths, total).then(result => {
-				expect(result).toHaveLength(3);
-				expect(result).toContain('script 1');
-				expect(result).toContain('script 3');
-				expect(result).toContain('script 4');
-				expect(result).not.toContain('script 2');
-			});
+			const result = await removeExtraScripts(filePaths, total);
+			
+			expect(result).toHaveLength(3);
+			// New implementation removes from the end (most recently added)
+			expect(result).toContain('script 1');
+			expect(result).toContain('script 2');
+			expect(result).toContain('script 3');
+			expect(result).not.toContain('script 4'); // Last script removed
+		});
+
+		it('should return all scripts when total is greater than or equal to filePaths length', async () => {
+			const filePaths = ['script 1', 'script 2', 'script 3'];
+			const total = 5;
+
+			const result = await removeExtraScripts(filePaths, total);
+			
+			expect(result).toHaveLength(3);
+			expect(result).toEqual(filePaths);
+		});
+
+		it('should return empty array when filePaths is empty', async () => {
+			const filePaths = [];
+			const total = 3;
+
+			const result = await removeExtraScripts(filePaths, total);
+			
+			expect(result).toHaveLength(0);
 		});
 	});
 });

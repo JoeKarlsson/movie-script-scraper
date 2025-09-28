@@ -7,7 +7,7 @@ jest.unmock('../../src/getScript/getScript');
 jest.mock('../../src/getScript/helper/writeToFile', () => require('../../tests/fixtures/__mocks__/writeToFile'));
 jest.mock('../../src/getScript/helper/isInvalidScript', () => require('../../tests/fixtures/__mocks__/isInvalidScript'));
 jest.mock('../../src/getScript/helper/extractPageContents', () => require('../../tests/fixtures/__mocks__/extractPageContents'));
-jest.mock('../../src/genre/helper/shouldRandomlySave', () => require('../../tests/fixtures/__mocks__/shouldRandomlySave'));
+// shouldRandomlySave module removed - no longer needed with parallel processing
 jest.mock('../../src/genre/helper/fileSystem', () => require('../../tests/fixtures/__mocks__/fileSystem'));
 jest.mock('../../src/genre/helper/addScriptsToDir', () => require('../../tests/fixtures/__mocks__/addScriptsToDir'));
 

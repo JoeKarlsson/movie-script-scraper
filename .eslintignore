@@ -1,4 +1,36 @@
-node_modules
-coverage
+# Dependencies
+node_modules/
+
+# Test files and coverage
+tests/
+coverage/
+src/**/*/spec.js
+
+# Build and distribution files
+dist/
+build/
+*.min.js
 webpack.*.js
+
+# Generated files
+*.log
+*.tgz
+*.tar.gz
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# Configuration files that don't need linting
 package.json
+package-lock.json

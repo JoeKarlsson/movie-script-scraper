@@ -41,14 +41,15 @@ describe('Performance Tests', () => {
             const duration = endTime - startTime;
 
             expect(result).toBeDefined();
-            expect(duration).toBeLessThan(5000); // Should complete within 5 seconds
+            expect(duration).toBeLessThan(3000); // Should complete within 3 seconds (improved with parallel processing)
         });
 
-        it('should complete title scraping within acceptable time', async () => {
+        it('should complete all-scripts scraping within acceptable time', async () => {
             const startTime = Date.now();
 
             const options = createMockOptions({
-                title: 'Test Movie'
+                all: true,
+                total: 5
             });
 
             const result = await mss(options);
@@ -57,7 +58,7 @@ describe('Performance Tests', () => {
             const duration = endTime - startTime;
 
             expect(result).toBeDefined();
-            expect(duration).toBeLessThan(3000); // Should complete within 3 seconds
+            expect(duration).toBeLessThan(3000); // Should complete within 3 seconds (improved with parallel processing)
         });
     });
 
@@ -83,8 +84,8 @@ describe('Performance Tests', () => {
             const finalMemory = process.memoryUsage();
             const memoryIncrease = finalMemory.heapUsed - initialMemory.heapUsed;
 
-            // Memory increase should be reasonable (less than 50MB)
-            expect(memoryIncrease).toBeLessThan(50 * 1024 * 1024);
+            // Memory increase should be reasonable (less than 30MB with optimizations)
+            expect(memoryIncrease).toBeLessThan(30 * 1024 * 1024);
         });
 
         it('should handle large datasets efficiently', async () => {
@@ -108,7 +109,7 @@ describe('Performance Tests', () => {
             const duration = endTime - startTime;
 
             expect(result).toBeDefined();
-            expect(duration).toBeLessThan(10000); // Should handle large dataset within 10 seconds
+            expect(duration).toBeLessThan(5000); // Should handle large dataset within 5 seconds (improved with parallel processing)
         });
     });
 
@@ -135,7 +136,7 @@ describe('Performance Tests', () => {
             });
 
             // Should complete within reasonable time even with concurrency
-            expect(duration).toBeLessThan(15000); // 15 seconds for 10 concurrent operations
+            expect(duration).toBeLessThan(8000); // 8 seconds for 10 concurrent operations (improved with parallel processing)
         });
 
         it('should maintain performance under sustained load', async () => {
@@ -165,7 +166,7 @@ describe('Performance Tests', () => {
             });
 
             // Should maintain reasonable performance
-            expect(duration).toBeLessThan(30000); // 30 seconds for 50 operations
+            expect(duration).toBeLessThan(20000); // 20 seconds for 50 operations (improved with optimizations)
         });
     });
 
@@ -212,6 +213,63 @@ describe('Performance Tests', () => {
 
             // Should not leak handles even on error
             expect(finalHandles - initialHandles).toBeLessThan(5);
+        });
+    });
+
+    describe('Parallel Processing Tests', () => {
+        it('should process multiple scripts in parallel', async () => {
+            const startTime = Date.now();
+
+            const options = createMockOptions({
+                genre: 'Action',
+                total: 10
+            });
+
+            const result = await mss(options);
+
+            const endTime = Date.now();
+            const duration = endTime - startTime;
+
+            expect(result).toBeDefined();
+            expect(result.length).toBeGreaterThan(0);
+
+            // With parallel processing, 10 scripts should complete much faster than sequential
+            expect(duration).toBeLessThan(4000); // Should be much faster than sequential processing
+        });
+
+        it('should handle retry logic efficiently', async () => {
+            // Mock API to fail first few requests then succeed
+            let callCount = 0;
+            const originalApi = require('../../src/helper/api');
+            const mockApi = jest.fn().mockImplementation(() => {
+                callCount++;
+                if (callCount <= 2) {
+                    return Promise.reject(new Error('Network error'));
+                }
+                return Promise.resolve('<rss><channel><item><link>http://www.imsdb.com/scripts/test.html</link></item></channel></rss>');
+            });
+
+            // Temporarily replace the API function
+            jest.doMock('../../src/helper/api', () => mockApi);
+
+            const startTime = Date.now();
+
+            const options = createMockOptions({
+                genre: 'Action',
+                total: 1
+            });
+
+            const result = await mss(options);
+
+            const endTime = Date.now();
+            const duration = endTime - startTime;
+
+            expect(result).toBeDefined();
+            expect(callCount).toBe(3); // Should retry twice then succeed
+            expect(duration).toBeLessThan(5000); // Should complete within reasonable time even with retries
+
+            // Restore original API
+            jest.dontMock('../../src/helper/api');
         });
     });
 

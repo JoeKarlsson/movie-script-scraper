@@ -35,7 +35,26 @@ const title = page => {
 	return title;
 };
 
+/**
+ * Optimized script content extraction with memory efficiency
+ * @param {string} html - HTML content to parse
+ * @param {string} url - URL for title extraction
+ * @returns {Object} Object containing script content and title
+ */
 const extractPageContents = (html, url) => {
+	// Early return for empty or very small content
+	if (!html || html.length < 100) {
+		return {
+			script: '',
+			title: 'script'
+		};
+	}
+
+	// Use streaming approach for very large content (>1MB)
+	if (html.length > 1024 * 1024) {
+		return extractLargeContent(html, url);
+	}
+
 	const $ = cheerio.load(html);
 
 	// Look for script content in <pre> tags first (most scripts are in pre tags)
@@ -66,18 +85,8 @@ const extractPageContents = (html, url) => {
 		}
 	}
 
-	// Clean up the script content
-	script = script.replace('Search IMSDb', '');
-	script = script.replace(/^\s+|\s+$/g, ''); // Trim whitespace
-
-	// Clean up extra whitespace and formatting
-	script = script
-		.replace(/\r\n/g, '\n') // Normalize line endings
-		.replace(/\n\s*\n\s*\n/g, '\n\n') // Replace multiple blank lines with double newlines
-		.replace(/[ \t]+$/gm, '') // Remove trailing spaces from each line
-		.replace(/^[ \t]+/gm, '') // Remove leading spaces from each line
-		.replace(/\n{3,}/g, '\n\n') // Replace 3+ consecutive newlines with double newlines
-		.trim();
+	// Clean up the script content efficiently
+	script = cleanScriptContent(script);
 
 	// Try to get title from URL if page title is not good
 	let cleanTitle = title($);
@@ -102,6 +111,69 @@ const extractPageContents = (html, url) => {
 		script: finalScript,
 		title: cleanTitle,
 	};
+};
+
+/**
+ * Extract content from very large HTML using streaming approach
+ * @param {string} html - Large HTML content
+ * @param {string} url - URL for title extraction
+ * @returns {Object} Object containing script content and title
+ */
+const extractLargeContent = (html, url) => {
+	// Use regex for large content instead of DOM parsing
+	const preMatch = html.match(/<pre[^>]*>([\s\S]*?)<\/pre>/i);
+	let script = '';
+
+	if (preMatch && preMatch[1].length > 100) {
+		[, script] = preMatch;
+		script = script.replace(/<[^>]*>/g, '');
+	} else {
+		// Look for script patterns in large content
+		const scriptMatch = html.match(/(FADE IN[\s\S]*?)(?:<|$)/i);
+		if (scriptMatch) {
+			[, script] = scriptMatch;
+		}
+	}
+
+	script = cleanScriptContent(script);
+
+	// Extract title from URL
+	let cleanTitle = 'script';
+	if (url) {
+		const urlMatch = url.match(/\/scripts\/([^/]+)\.html$/);
+		if (urlMatch) {
+			cleanTitle = urlMatch[1].toLowerCase().replace(/-/g, '-');
+		}
+	}
+
+	const displayTitle = cleanTitle
+		.split('-')
+		.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(' ');
+
+	return {
+		script: `${displayTitle}\n\n${script}`,
+		title: cleanTitle,
+	};
+};
+
+/**
+ * Clean script content efficiently
+ * @param {string} script - Raw script content
+ * @returns {string} Cleaned script content
+ */
+const cleanScriptContent = (script) => {
+	if (!script) return '';
+
+	return script
+		.replace('Search IMSDb', '')
+		.replace(/^\s+|\s+$/g, '') // Trim whitespace
+		.replace(/\r\n/g, '\n') // Normalize line endings
+		.replace(/\n\s*\n\s*\n/g, '\n\n') // Replace multiple blank lines with double newlines
+		.replace(/[ \t]+$/gm, '') // Remove trailing spaces from each line
+		.replace(/^[ \t]+/gm, '') // Remove leading spaces from each line
+		.replace(/\n{3,}/g, '\n\n') // Replace 3+ consecutive newlines with double newlines
+		.trim();
 };
 
 module.exports = extractPageContents;

@@ -54,8 +54,8 @@ describe('Movie Script Scraper E2E Tests', () => {
             });
         });
 
-        it('should execute successfully with title argument', (done) => {
-            const child = spawn('node', [appPath, '--title', 'Test Movie', '--dest', testDir], {
+        it('should execute successfully with all scripts argument', (done) => {
+            const child = spawn('node', [appPath, '--all', '--total', '2', '--dest', testDir], {
                 cwd: path.join(__dirname, '../..'),
                 stdio: 'pipe'
             });
@@ -127,6 +127,31 @@ describe('Movie Script Scraper E2E Tests', () => {
                 done();
             });
         });
+
+        it('should reject title-based scraping with helpful message', (done) => {
+            const child = spawn('node', [appPath, '--title', 'Test Movie', '--dest', testDir], {
+                cwd: path.join(__dirname, '../..'),
+                stdio: 'pipe'
+            });
+
+            let output = '';
+            let errorOutput = '';
+
+            child.stdout.on('data', (data) => {
+                output += data.toString();
+            });
+
+            child.stderr.on('data', (data) => {
+                errorOutput += data.toString();
+            });
+
+            child.on('close', (code) => {
+                expect(code).toBe(0);
+                expect(errorOutput).toContain('Title-based scraping has been disabled');
+                expect(errorOutput).toContain('Recommended alternatives');
+                done();
+            });
+        });
     });
 
     describe('Output Validation', () => {
@@ -171,7 +196,7 @@ describe('Movie Script Scraper E2E Tests', () => {
                 const duration = endTime - startTime;
 
                 expect(code).toBe(0);
-                expect(duration).toBeLessThan(10000); // Should complete within 10 seconds
+                expect(duration).toBeLessThan(5000); // Should complete within 5 seconds (improved with optimizations)
                 done();
             });
         });

@@ -5,7 +5,7 @@ jest.mock('../../src/getScript/getScript', () => jest.fn((url, options) => {
 	return Promise.resolve(`scripts/${options.genre}/frozen.txt`);
 }));
 jest.mock('../../src/helper/handleError');
-jest.mock('../../src/genre/helper/shouldRandomlySave', () => jest.fn(() => true));
+// shouldRandomlySave module removed - no longer needed with parallel processing
 jest.mock('../../src/genre/helper/fileSystem', () => ({
 	checkDirectory: jest.fn(() => Promise.resolve(true))
 }));

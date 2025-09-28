@@ -1,5 +1,6 @@
 const createURL = title => {
-	// Convert title to URL-friendly format with title case
+	// Convert title to URL-friendly format matching IMSDB's current structure
+	// IMSDB uses Title-Case-With-Hyphens format
 	const urlTitle = title
 		.toLowerCase()
 		.replace(/[^a-z0-9\s-]/g, '') // Remove special characters
@@ -10,7 +11,8 @@ const createURL = title => {
 		.map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Title case each word
 		.join('-');
 
-	return `https://imsdb.com/Movie Scripts/${urlTitle} Script.html`;
+	// Use the current IMSDB URL format: /scripts/[Title-Case-Name].html
+	return `https://imsdb.com/scripts/${urlTitle}.html`;
 };
 
 module.exports = createURL;

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * Movie Script Scraper - Main Application Entry Point
  * 
@@ -6,8 +8,12 @@
  * 
  * Usage:
  *   node src/app.js --genre Action --total 5 --dest ./scripts
- *   node src/app.js --title "Frozen" --dest ./scripts
+ *   node src/app.js --genre Comedy --total 3
+ *   node src/app.js --all --total 20 --dest ./all-scripts
  *   node src/app.js (uses defaults: Action genre, 10 scripts, ./scripts dest)
+ * 
+ * Note: Title-based scraping has been disabled due to IMSDB URL structure limitations.
+ * Please use genre-based scraping or the --all option instead, which are more reliable and efficient.
  */
 
 const minimist = require('minimist');
@@ -35,13 +41,28 @@ const app = async () => {
 		// process.argv.slice(2) removes 'node' and script path, leaving only user arguments
 		const argv = minimist(process.argv.slice(2));
 
+		// Check if user is trying to use title-based scraping (disabled)
+		if (argv.title) {
+			console.error('❌ Title-based scraping has been disabled.');
+			console.error('📝 Reason: IMSDB URL structure limitations prevent reliable title-based access.');
+			console.error('');
+			console.error('✅ Recommended alternatives:');
+			console.error('   • Use genre-based scraping: --genre Action --total 5');
+			console.error('   • Browse available scripts by genre and select what you need');
+			console.error('   • Genre-based scraping is faster and more reliable');
+			console.error('');
+			console.error('💡 Example usage:');
+			console.error('   node src/app.js --genre Action --total 3 --dest ./scripts');
+			console.error('   node src/app.js --genre Comedy --total 5');
+			return false;
+		}
+
 		// Validate the parsed arguments and check for required parameters
 		const clear = parseArgs(argv);
 
 		// Only proceed if arguments are valid
 		if (clear) {
 			// Set undefined values to undefined explicitly (for cleaner object structure)
-			argv.title = argv.title || undefined;
 			argv.genre = argv.genre || undefined;
 			argv.total = argv.total || undefined;
 			argv.dest = argv.dest || undefined;

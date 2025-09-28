@@ -26,12 +26,14 @@
 
 [![NPM](https://nodei.co/npm/movie-script-scraper.png)](https://npmjs.org/package/movie-script-scraper)
 
-A simple scraper to retrieve movie scripts by genre or title from [IMSDB](http://www.imsdb.com/).
+A high-performance scraper to retrieve movie scripts by genre from [IMSDB](http://www.imsdb.com/).
 
 ## Features
 
 - 🎬 **Genre-based scraping** - Download multiple scripts from any movie genre
-- 🔍 **Title-based search** - Find and download specific movie scripts
+- 🌐 **All-scripts scraping** - Download from IMSDB's complete script database
+- ⚡ **High performance** - Parallel processing with optimized concurrency control
+- 🔄 **Smart retry logic** - Robust error handling with exponential backoff
 - 📁 **Organized output** - Scripts saved in structured directories
 - 🧪 **Comprehensive testing** - Unit, integration, and e2e test coverage
 - 🔧 **Developer-friendly** - Modern tooling with ESLint, Prettier, and Jest
@@ -69,26 +71,48 @@ mss(options)
 
 ### Options
 
-- `genre` [**string**] - Any valid film genre, a complete list can be found [in the isValidGenre helper](https://github.com/JoeKarlsson/movie-script-scraper/blob/master/src/helper/isValidGenre.js).
+- `genre` [**string**] - Any valid film genre from the following list:
+  - **Action** | **Adventure** | **Animation** | **Comedy** | **Crime** | **Drama**
+  - **Family** | **Fantasy** | **Film-Noir** | **Horror** | **Musical** | **Mystery**
+  - **Romance** | **Sci-Fi** | **Short** | **Thriller** | **War** | **Western**
   - Defaults to "Action".
-- `total` [**number**] - the total number of scripts you want from a given genre.
-  - Defaults to 10.
-- `title` [**string**] - The name of the film's script you want.
+- `all` [**boolean**] - Download from IMSDB's complete script database (all-scripts.html).
+  - Defaults to false.
+- `total` [**number**] - the total number of scripts you want to download.
+  - Defaults to 10 for genre-based, 50 for all-scripts.
 - `dest` [**string**] - Location that you want to save your scripts.
   - Defaults to ./scripts in the root directory.
+
+**Note:** Title-based scraping has been disabled due to IMSDB URL structure limitations. Genre-based scraping and the --all option are more reliable and efficient.
+
+## Available Genres
+
+The scraper supports downloading scripts from the following movie genres:
+
+| Action | Adventure | Animation | Comedy | Crime | Drama |
+|--------|-----------|-----------|--------|-------|-------|
+| Family | Fantasy | Film-Noir | Horror | Musical | Mystery |
+| Romance | Sci-Fi | Short | Thriller | War | Western |
 
 ## Running from command line
 
 You can run the Movie Script Scraper directly from the CLI (if it's globally available in your PATH, e.g. by `npm install -g movie-script-scraper`) with variety of useful [options](https://github.com/JoeKarlsson/movie-script-scraper#options).
 
 ```bash
-movie-script-scraper  --total 10 --genre Comedy
-```
+# Download Comedy scripts
+movie-script-scraper --total 10 --genre Comedy
 
-or enter a title:
+# Download Action scripts to custom directory
+movie-script-scraper --genre Action --total 5 --dest ./my-scripts
 
-```bash
-movie-script-scraper  --title 'american sniper'
+# Download Horror scripts
+movie-script-scraper --genre Horror --total 8
+
+# Download from all available scripts
+movie-script-scraper --all --total 20 --dest ./all-scripts
+
+# Use defaults (Action genre, 10 scripts)
+movie-script-scraper
 ```
 
 # How it Works
@@ -104,20 +128,34 @@ The Movie Script Scraper works by leveraging IMSDB's RSS feeds and web scraping 
 
 ## Architecture
 
-The scraper supports two main modes:
+The scraper supports two high-performance scraping modes:
 
 ### Genre-Based Scraping
 
 - Fetches multiple scripts from a specified genre
 - Uses RSS feeds to discover available scripts
-- Implements random selection and duplicate prevention
+- **Parallel processing** with configurable concurrency (default: 5 concurrent downloads)
+- **Smart selection** - pre-filters URLs to avoid unnecessary downloads
+- **Retry logic** with exponential backoff for robust error handling
+- **Memory optimization** - streaming for large responses
 - Supports configurable download limits
 
-### Title-Based Scraping  
+### All-Scripts Scraping
 
-- Searches for a specific movie script by title
-- Direct URL construction and validation
-- Single script download with error handling
+- Fetches scripts from IMSDB's complete database ([all-scripts.html](https://imsdb.com/all-scripts.html))
+- Uses comprehensive alphabetical script list
+- **Same performance optimizations** as genre-based scraping
+- **Larger default limit** (50 scripts) due to extensive available content
+- **Organized by "All" genre** for easy file management
+- Perfect for discovering diverse script content
+
+### Performance Features
+
+- **Concurrent Downloads**: Multiple scripts download simultaneously
+- **Smart URL Selection**: Only downloads the exact number requested
+- **Robust Error Handling**: Automatic retries with exponential backoff
+- **Memory Efficient**: Streaming for large HTML responses
+- **Progress Reporting**: Real-time feedback during downloads
 
 ## Dependencies
 
@@ -378,8 +416,6 @@ npm run dev
 [prettier-url]: https://prettier.io/
 [dependencies]: https://img.shields.io/david/JoeKarlsson/movie-script-scraper.svg
 [dependencies-url]: https://david-dm.org/JoeKarlsson/movie-script-scraper
-[dev-dependencies]: https://img.shields.io/david/dev/JoeKarlsson/movie-script-scraper.svg
-[dev-dependencies-url]: https://david-dm.org/JoeKarlsson/movie-script-scraper?type=dev
 [last-commit]: https://img.shields.io/github/last-commit/JoeKarlsson/movie-script-scraper.svg
 [last-commit-url]: https://github.com/JoeKarlsson/movie-script-scraper/commits
 [github-issues]: https://img.shields.io/github/issues/JoeKarlsson/movie-script-scraper.svg

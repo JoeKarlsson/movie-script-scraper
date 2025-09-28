@@ -12,10 +12,13 @@ const { createMockOptions, createMockURLs } = global.testUtils;
 
 // Mock the API calls to avoid hitting real IMSDB during tests
 jest.mock('../../src/helper/api', () => {
-    return jest.fn().mockImplementation((url) => {
-        if (url.includes('genre.php')) {
+    return jest.fn().mockImplementation(async (url, options = {}) => {
+        // Simulate a small delay to test async behavior
+        await new Promise(resolve => setTimeout(resolve, 10));
+
+        if (url.includes('genre.php') || url.includes('/genre/')) {
             // Mock genre feed response
-            return Promise.resolve(`
+            return `
 				<rss>
 					<channel>
 						<item>
@@ -28,10 +31,10 @@ jest.mock('../../src/helper/api', () => {
 						</item>
 					</channel>
 				</rss>
-			`);
+			`;
         }
         // Mock individual script page
-        return Promise.resolve(`
+        return `
 			<html>
 				<head><title>Test Movie Script at IMSDb.</title></head>
 				<body>
@@ -45,7 +48,7 @@ jest.mock('../../src/helper/api', () => {
 					</table>
 				</body>
 			</html>
-		`);
+		`;
     });
 });
 
@@ -66,7 +69,7 @@ jest.mock('../../src/getScript/helper/extractPageContents', () => jest.fn(() => 
     script: 'FADE IN:\nEXT. TEST LOCATION - DAY\nThis is a test movie script with enough content to be valid.',
     title: 'test-movie'
 })));
-jest.mock('../../src/genre/helper/shouldRandomlySave', () => jest.fn(() => true));
+// shouldRandomlySave module removed - no longer needed with parallel processing
 jest.mock('../../src/genre/helper/fileSystem', () => ({
     checkDirectory: jest.fn((dest, genre) => {
         const fs = require('fs');
@@ -160,11 +163,12 @@ describe('Movie Script Scraper Integration Tests', () => {
         });
     });
 
-    describe('Title-based Scraping', () => {
-        it('should successfully scrape a specific movie script', async () => {
+    describe('All-Scripts Scraping', () => {
+        it('should successfully scrape from all-scripts page', async () => {
             const options = createMockOptions({
-                title: 'Test Movie',
-                dest: testDir
+                all: true,
+                dest: testDir,
+                total: 2
             });
 
             const result = await mss(options);
@@ -174,16 +178,27 @@ describe('Movie Script Scraper Integration Tests', () => {
             // Integration tests may not always get scripts due to random selection
             // Just verify the function runs without error
             expect(result.length).toBeGreaterThanOrEqual(0);
+
+            // If scripts were created, verify the structure
+            if (result.length > 0) {
+                const allDir = path.join(testDir, 'All');
+                expect(fs.existsSync(allDir)).toBe(true);
+
+                const files = fs.readdirSync(allDir);
+                expect(files.length).toBeGreaterThan(0);
+                expect(files.every(file => file.endsWith('.txt'))).toBe(true);
+            }
         });
 
-        it('should handle non-existent movie gracefully', async () => {
-            // Mock API to return empty response for non-existent movie
+        it('should handle empty all-scripts page gracefully', async () => {
+            // Mock API to return empty response for all-scripts page
             const api = require('../../src/helper/api');
-            api.mockResolvedValueOnce('<html><body>Movie not found</body></html>');
+            api.mockResolvedValueOnce('<html><body>No scripts found</body></html>');
 
             const options = createMockOptions({
-                title: 'NonExistentMovie',
-                dest: testDir
+                all: true,
+                dest: testDir,
+                total: 2
             });
 
             const result = await mss(options);

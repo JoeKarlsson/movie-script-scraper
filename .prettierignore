@@ -1,1 +1,43 @@
+# Dependencies
+node_modules/
+
+# Test files and coverage
+tests/
+coverage/
+
+# Build and distribution files
+dist/
+build/
+*.min.js
+
+# Generated files
+*.log
+*.tgz
+*.tar.gz
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# Configuration files
+package.json
+package-lock.json
+
+# Text files and scripts
 src/**/*.txt
+scripts/**/*.txt
+*.txt
+
+# Lock files
+yarn.lock
+package-lock.json

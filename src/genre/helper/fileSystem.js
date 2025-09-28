@@ -1,7 +1,7 @@
 const util = require('util');
 const fs = require('fs');
 const { mkdirp } = require('mkdirp');
-const randomIntFromInterval = require('../../helper/randomIntFromInterval');
+// const randomIntFromInterval = require('../../helper/randomIntFromInterval');
 const handleError = require('../../helper/handleError');
 
 const stat = util.promisify(fs.stat);
@@ -23,21 +23,31 @@ const checkDirectory = async (dest, genre) => {
 	}
 };
 
-const removeExtraScripts = (filePaths, total) => {
-	const promise = new Promise((resolve, reject) => {
-		const numToRemove = filePaths.length - total;
+/**
+ * Removes extra scripts to match the requested total
+ * Now optimized to work with pre-selected scripts
+ * @param {Array} filePaths - Array of file paths
+ * @param {number} total - Desired total number of scripts
+ * @returns {Promise<Array>} Array of file paths trimmed to total
+ */
+const removeExtraScripts = async (filePaths, total) => {
+	// Since we now pre-select scripts, we should rarely need to remove any
+	// But keep this function for backward compatibility and edge cases
+	if (filePaths.length <= total) {
+		return filePaths;
+	}
 
-		for (let i = 0; i < numToRemove; i++) {
-			const randScriptIndx = randomIntFromInterval(0, filePaths.length - 1);
-			const filePath = filePaths[randScriptIndx];
-			filePaths.splice(randScriptIndx, 1);
-			unlink(filePath).catch(() => {
-				reject(new Error(`Failed to remove script at ${filePath}`));
-			});
-		}
-		resolve(filePaths);
-	});
-	return promise;
+	// Remove excess scripts from the end (most recently added)
+	const scriptsToRemove = filePaths.slice(total);
+	const remainingScripts = filePaths.slice(0, total);
+
+	// Remove excess files asynchronously
+	const removePromises = scriptsToRemove.map(filePath =>
+		unlink(filePath).catch(error =>
+			console.warn(`Failed to remove excess script ${filePath}:`, error.message)));
+
+	await Promise.all(removePromises);
+	return remainingScripts;
 };
 
 module.exports = { checkDirectory, removeExtraScripts };

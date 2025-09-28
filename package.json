@@ -25,6 +25,15 @@
   },
   "license": "MIT",
   "main": "src/mss",
+  "bin": {
+    "movie-script-scraper": "./src/app.js"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "preferGlobal": true,
   "engines": {
     "node": ">=16.0.0"
   },
