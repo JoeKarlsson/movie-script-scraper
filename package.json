@@ -54,7 +54,6 @@
     "format": "prettier --config=config/.prettierrc --write src tests config",
     "format:check": "prettier --config=config/.prettierrc --check src tests config",
     "healthcheck": "npm run lint && npm run test:coverage",
-    "precommit": "npm run lint && npm run test:unit",
     "prepush": "npm prune && npm run healthcheck",
     "postmerge": "npm install",
     "audit:fix": "npm audit fix",
