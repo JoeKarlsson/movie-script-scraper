@@ -33,15 +33,26 @@ global.testUtils = {
 
 // Console suppression for cleaner test output
 const originalConsole = console;
-global.console = {
+const mockConsole = {
     ...originalConsole,
     log: jest.fn(),
     error: jest.fn(),
     warn: jest.fn(),
     info: jest.fn(),
+    debug: jest.fn(),
 };
 
+// Suppress console output during tests
+beforeEach(() => {
+    global.console = mockConsole;
+    jest.clearAllMocks();
+});
+
 // Restore console after tests
+afterEach(() => {
+    global.console = originalConsole;
+});
+
 afterAll(() => {
     global.console = originalConsole;
 });
