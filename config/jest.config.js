@@ -9,25 +9,8 @@ module.exports = {
 		'<rootDir>/tests/e2e/**/*.e2e.test.js'
 	],
 
-	// Coverage configuration
-	collectCoverageFrom: [
-		'src/**/*.js',
-		'!src/**/*.spec.js',
-		'!src/**/*.test.js',
-		'!src/**/__mocks__/**',
-		'!src/app.js',
-	],
-	coverageReporters: ['text', 'lcov', 'html', 'json'],
-	coverageDirectory: 'coverage',
-	coveragePathIgnorePatterns: ['<rootDir>/src/app'],
-	coverageThreshold: {
-		global: {
-			branches: 0,
-			functions: 0,
-			lines: 0,
-			statements: 0,
-		},
-	},
+	// Coverage configuration - using c8 instead of Jest's built-in coverage
+	collectCoverage: false,
 
 	// Test environment
 	testEnvironment: 'node',
