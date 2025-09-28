@@ -32,7 +32,7 @@ const cleanArr = arr => {
 	if (!arr || !Array.isArray(arr)) {
 		return [];
 	}
-	
+
 	// Use Array.filter with Boolean constructor to remove all falsy values
 	// Boolean constructor acts as a truthy filter function
 	return arr.filter(Boolean);

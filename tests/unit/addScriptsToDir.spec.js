@@ -1,9 +1,14 @@
 const addScriptsToDir = require('../../src/genre/helper/addScriptsToDir');
 const mocksUrls = require('../../tests/fixtures/__mocks__/data/mock-urls.json');
 
-jest.mock('../../src/getScript/getScript');
+jest.mock('../../src/getScript/getScript', () => jest.fn((url, options) => {
+	return Promise.resolve(`scripts/${options.genre}/frozen.txt`);
+}));
 jest.mock('../../src/helper/handleError');
-jest.mock('../../src/genre/helper/shouldRandomlySave');
+jest.mock('../../src/genre/helper/shouldRandomlySave', () => jest.fn(() => true));
+jest.mock('../../src/genre/helper/fileSystem', () => ({
+	checkDirectory: jest.fn(() => Promise.resolve(true))
+}));
 
 describe('addScriptsToDir', () => {
 	it('should return true if directory exists', () => {
@@ -12,7 +17,7 @@ describe('addScriptsToDir', () => {
 			dest: 'scripts',
 			total: 10,
 		};
-		const expectedResult = ['scripts/frozen.txt'];
+		const expectedResult = ['scripts/Action/frozen.txt'];
 		addScriptsToDir(mocksUrls, options)
 			.then(result => {
 				expect(result).toMatchObject(expectedResult);

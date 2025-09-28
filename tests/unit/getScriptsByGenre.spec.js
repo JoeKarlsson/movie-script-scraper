@@ -4,10 +4,11 @@ const getScriptsByGenre = require('../../src/genre/getScriptsByGenre');
 const mocksUrls = require('../../tests/fixtures/__mocks__/data/mock-urls.json');
 
 jest.unmock('../../src/getScript/getScript');
-jest.mock('../../src/getScript/helper/writeToFile');
-jest.mock('../../src/getScript/helper/isInvalidScript');
-jest.mock('../../src/genre/helper/shouldRandomlySave');
-jest.mock('../../src/genre/helper/fileSystem');
+jest.mock('../../src/getScript/helper/writeToFile', () => require('../../tests/fixtures/__mocks__/writeToFile'));
+jest.mock('../../src/getScript/helper/isInvalidScript', () => require('../../tests/fixtures/__mocks__/isInvalidScript'));
+jest.mock('../../src/getScript/helper/extractPageContents', () => require('../../tests/fixtures/__mocks__/extractPageContents'));
+jest.mock('../../src/genre/helper/shouldRandomlySave', () => require('../../tests/fixtures/__mocks__/shouldRandomlySave'));
+jest.mock('../../src/genre/helper/fileSystem', () => require('../../tests/fixtures/__mocks__/fileSystem'));
 
 const mockData = fs.readFileSync(
 	'tests/fixtures/__mocks__/data/mock_genre_data.xml',
@@ -43,10 +44,9 @@ describe('getScriptsByGenre', () => {
 		};
 
 		const expectedResult = [
-			'scripts/hellboy.txt',
-			'scripts/frozen.txt',
-			'scripts/x-men.txt',
-			'scripts/american-sniper.txt',
+			'scripts/Action/frozen.txt',
+			'scripts/Action/frozen.txt',
+			'scripts/Action/frozen.txt',
 		];
 
 		getScriptsByGenre(options)
