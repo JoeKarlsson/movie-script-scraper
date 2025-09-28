@@ -46,6 +46,7 @@ test-output/
 test-output-*/
 test-scripts/
 *.txt
+!tests/fixtures/__mocks__/data/*.txt
 
 # Logs
 logs

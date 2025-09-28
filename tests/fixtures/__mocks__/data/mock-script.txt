@@ -1,0 +1,29 @@
+FADE IN:
+
+EXT. TEST LOCATION - DAY
+
+This is a test movie script with enough content to be valid.
+It contains multiple lines of dialogue and action.
+
+CHARACTER
+Hello, this is a test script.
+
+ANOTHER CHARACTER
+Yes, this should be long enough to pass validation.
+
+More content to ensure the script is valid and passes all tests.
+This script contains enough characters to be considered valid.
+
+ADDITIONAL CONTENT TO MAKE SURE THIS SCRIPT IS LONG ENOUGH
+This is additional content to ensure the script exceeds 500 characters.
+We need to add more text here to make sure the validation passes.
+This is a longer script that should definitely pass the length validation.
+We are adding more content to ensure the script is long enough.
+This should be sufficient to make the script valid for testing purposes.
+More dialogue and action sequences to pad out the content.
+Additional character interactions and scene descriptions.
+More detailed action sequences and character development.
+Extended dialogue exchanges between characters.
+Detailed scene descriptions and action sequences.
+Additional content to ensure the script meets the minimum length requirements.
+This should definitely be long enough now to pass all validation tests.

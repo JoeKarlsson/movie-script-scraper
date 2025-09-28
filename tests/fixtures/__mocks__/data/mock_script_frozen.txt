@@ -1,0 +1,15 @@
+FADE IN:
+
+EXT. ARENDELLE CASTLE - DAY
+
+This is the Frozen movie script with enough content to be valid.
+It contains multiple lines of dialogue and action.
+
+ELSA
+Let it go, let it go.
+
+ANNA
+Do you want to build a snowman?
+
+More content to ensure the script is valid and passes all tests.
+This script contains enough characters to be considered valid.

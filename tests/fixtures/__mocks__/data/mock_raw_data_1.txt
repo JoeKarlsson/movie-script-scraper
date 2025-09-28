@@ -1,0 +1,20 @@
+<html>
+<head><title>Frozen Script at IMSDb.</title></head>
+<body>
+  <table>
+    <tr><td>Search IMSDb</td></tr>
+  </table>
+  <table>
+    <tr><td>FADE IN:</td></tr>
+    <tr><td>EXT. ARENDELLE CASTLE - DAY</td></tr>
+    <tr><td>This is the Frozen movie script with enough content to be valid.</td></tr>
+    <tr><td>It contains multiple lines of dialogue and action.</td></tr>
+    <tr><td>ELSA</td></tr>
+    <tr><td>Let it go, let it go.</td></tr>
+    <tr><td>ANNA</td></tr>
+    <tr><td>Do you want to build a snowman?</td></tr>
+    <tr><td>More content to ensure the script is valid and passes all tests.</td></tr>
+    <tr><td>This script contains enough characters to be considered valid.</td></tr>
+  </table>
+</body>
+</html>
