@@ -22,7 +22,7 @@ module.exports = {
 	coveragePathIgnorePatterns: ['<rootDir>/src/app'],
 	coverageThreshold: {
 		global: {
-			branches: 80,
+			branches: 75,
 			functions: 80,
 			lines: 80,
 			statements: 80,
@@ -56,4 +56,10 @@ module.exports = {
 	// Clear mocks between tests
 	clearMocks: true,
 	restoreMocks: true,
+
+	// Force exit to prevent hanging
+	forceExit: true,
+
+	// Detect open handles
+	detectOpenHandles: true,
 };

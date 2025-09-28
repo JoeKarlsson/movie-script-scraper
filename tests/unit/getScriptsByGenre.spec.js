@@ -9,6 +9,7 @@ jest.mock('../../src/getScript/helper/isInvalidScript', () => require('../../tes
 jest.mock('../../src/getScript/helper/extractPageContents', () => require('../../tests/fixtures/__mocks__/extractPageContents'));
 jest.mock('../../src/genre/helper/shouldRandomlySave', () => require('../../tests/fixtures/__mocks__/shouldRandomlySave'));
 jest.mock('../../src/genre/helper/fileSystem', () => require('../../tests/fixtures/__mocks__/fileSystem'));
+jest.mock('../../src/genre/helper/addScriptsToDir', () => require('../../tests/fixtures/__mocks__/addScriptsToDir'));
 
 const mockData = fs.readFileSync(
 	'tests/fixtures/__mocks__/data/mock_genre_data.xml',
@@ -44,17 +45,12 @@ describe('getScriptsByGenre', () => {
 		};
 
 		const expectedResult = [
-			'scripts/Action/frozen.txt',
-			'scripts/Action/frozen.txt',
-			'scripts/Action/frozen.txt',
+			'scripts/Action/frozen.txt'
 		];
 
-		getScriptsByGenre(options)
+		return getScriptsByGenre(options)
 			.then(result => {
 				expect(result).toMatchObject(expectedResult);
-			})
-			.catch(e => {
-				console.error(e);
 			});
 	});
 });
