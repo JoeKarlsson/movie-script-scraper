@@ -1,0 +1,37 @@
+module.exports = {
+	extends: ['airbnb-base', 'prettier'],
+	rules: {
+		'import/no-named-as-default': 0,
+		'no-underscore-dangle': 'off',
+		'no-console': 0,
+		'space-in-parens': 0,
+		'no-plusplus': 0,
+		'no-use-before-define': 0,
+		'padded-blocks': 0,
+		'no-param-reassign': 0,
+		'consistent-return': 0,
+		'no-bitwise': 0,
+		'no-shadow': 0,
+		'arrow-body-style': 0,
+		'no-tabs': 0,
+		indent: ['error', 'tab'],
+		'function-paren-newline': ['error', 'consistent'],
+		'import/extensions': ['error', 'ignorePackages', {
+			js: 'never',
+		}],
+		'import/no-unresolved': 'off',
+	},
+	env: {
+		browser: true,
+		node: true,
+		jest: true,
+		mocha: true,
+		mongo: true,
+		es2022: true,
+	},
+	plugins: ['import', 'prettier'],
+	parserOptions: {
+		ecmaVersion: 2022,
+		sourceType: 'module',
+	},
+};

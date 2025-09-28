@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss>
+  <channel>
+    <item>
+      <title>Action Movie 1</title>
+      <link>http://www.imsdb.com/scripts/Action-Movie-1.html</link>
+    </item>
+    <item>
+      <title>Action Movie 2</title>
+      <link>http://www.imsdb.com/scripts/Action-Movie-2.html</link>
+    </item>
+    <item>
+      <title>Action Movie 3</title>
+      <link>http://www.imsdb.com/scripts/Action-Movie-3.html</link>
+    </item>
+  </channel>
+</rss>

@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-- 8.8.0
+- 16.x
+- 18.x
+- 20.x
 notifications:
   email: false
 after_success: npm run coverage
