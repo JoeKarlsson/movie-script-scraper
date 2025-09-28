@@ -137,11 +137,11 @@ describe('extractPageContents', () => {
 	});
 
 	it('should handle title extraction from URL with proper formatting', () => {
-		const html = '<html><body>Content</body></html>';
+		const html = '<html><head><title>The Matrix Script at IMSDb.</title></head><body><b>FADE IN:</b><br>EXT. CITY - NIGHT<br>The city sprawls endlessly...</body></html>';
 		const url = 'http://example.com/scripts/the-matrix.html';
 		const result = extractPageContents(html, url);
-		expect(result.title).toBe('script'); // The title function returns 'script' for empty titles
-		expect(result.script).toContain('Script'); // The display title will contain "Script"
+		expect(result.title).toBe('the-matrix'); // The title function extracts from page title
+		expect(result.script).toContain('FADE IN:'); // The script content should be extracted
 	});
 
 	it('should handle empty or invalid title gracefully', () => {

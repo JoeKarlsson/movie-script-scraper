@@ -3,7 +3,7 @@ const path = require('path');
 const util = require('util');
 const handleError = require('../../helper/handleError');
 
-const writeFile = util.promisify(fs.writeFile);
+const writeFileAsync = util.promisify(fs.writeFile);
 const access = util.promisify(fs.access);
 const mkdir = util.promisify(fs.mkdir);
 
@@ -35,7 +35,7 @@ const writeToFile = async (filePath, script, title = 'script') => {
 		await ensureDirectoryExists(dirPath);
 
 		// Write file with proper encoding
-		await writeFile(filePath, script, 'utf8');
+		await writeFileAsync(filePath, script, 'utf8');
 
 		console.log(`✓ Downloaded: ${title}`);
 		return filePath;

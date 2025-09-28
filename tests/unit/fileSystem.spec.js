@@ -18,7 +18,7 @@ describe('fileSystem', () => {
 			const total = 3;
 
 			const result = await removeExtraScripts(filePaths, total);
-			
+
 			expect(result).toHaveLength(3);
 			// New implementation removes from the end (most recently added)
 			expect(result).toContain('script 1');
@@ -32,7 +32,7 @@ describe('fileSystem', () => {
 			const total = 5;
 
 			const result = await removeExtraScripts(filePaths, total);
-			
+
 			expect(result).toHaveLength(3);
 			expect(result).toEqual(filePaths);
 		});
@@ -42,7 +42,7 @@ describe('fileSystem', () => {
 			const total = 3;
 
 			const result = await removeExtraScripts(filePaths, total);
-			
+
 			expect(result).toHaveLength(0);
 		});
 	});

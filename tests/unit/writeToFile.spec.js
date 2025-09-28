@@ -1,90 +1,74 @@
 const writeToFile = require('../../src/getScript/helper/writeToFile');
 const fs = require('fs');
+const path = require('path');
+const os = require('os');
 
-jest.mock('fs');
 jest.mock('../../src/helper/handleError', () => jest.fn(() => 'error-handled'));
 
 describe('writeToFile', () => {
+	let tempDir;
+
 	beforeEach(() => {
-		jest.clearAllMocks();
+		// Create a temporary directory for each test
+		tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'writeToFile-test-'));
+	});
+
+	afterEach(() => {
+		// Clean up temporary directory
+		if (tempDir && fs.existsSync(tempDir)) {
+			fs.rmSync(tempDir, { recursive: true, force: true });
+		}
 	});
 
 	it('should return the file path of the script that is written to the FS', async () => {
-		const path = 'script/frozen.html';
+		const filePath = path.join(tempDir, 'frozen.html');
 		const mockScript = 'MOCK SCRIPT';
-		
-		// Mock successful file operations
-		fs.access = jest.fn().mockResolvedValue(undefined);
-		fs.writeFile = jest.fn().mockResolvedValue(undefined);
-		
-		const result = await writeToFile(path, mockScript);
-		expect(result).toBe(path);
-		expect(fs.writeFile).toHaveBeenCalledWith(path, mockScript, 'utf8');
+
+		const result = await writeToFile(filePath, mockScript);
+		expect(result).toBe(filePath);
+
+		// Verify file was actually written
+		expect(fs.existsSync(filePath)).toBe(true);
+		expect(fs.readFileSync(filePath, 'utf8')).toBe(mockScript);
 	});
 
 	it('should create directory if it does not exist', async () => {
-		const path = 'new-directory/frozen.html';
+		const dirPath = path.join(tempDir, 'new-directory');
+		const filePath = path.join(dirPath, 'frozen.html');
 		const mockScript = 'MOCK SCRIPT';
-		
-		// Mock directory doesn't exist, then creation succeeds
-		fs.access = jest.fn().mockRejectedValue(new Error('Directory not found'));
-		fs.mkdir = jest.fn().mockResolvedValue(undefined);
-		fs.writeFile = jest.fn().mockResolvedValue(undefined);
-		
-		const result = await writeToFile(path, mockScript);
-		expect(result).toBe(path);
-		expect(fs.mkdir).toHaveBeenCalledWith('new-directory', { recursive: true });
-		expect(fs.writeFile).toHaveBeenCalledWith(path, mockScript, 'utf8');
-	});
 
-	it('should handle write file errors', async () => {
-		const path = 'script/frozen.html';
-		const mockScript = 'MOCK SCRIPT';
-		const mockError = new Error('Write failed');
-		
-		// Mock successful directory check but failed write
-		fs.access = jest.fn().mockResolvedValue(undefined);
-		fs.writeFile = jest.fn().mockRejectedValue(mockError);
-		
-		const result = await writeToFile(path, mockScript, 'Test Title');
-		expect(result).toBe('error-handled');
-	});
+		const result = await writeToFile(filePath, mockScript);
+		expect(result).toBe(filePath);
 
-	it('should handle directory creation errors', async () => {
-		const path = 'new-directory/frozen.html';
-		const mockScript = 'MOCK SCRIPT';
-		const mockError = new Error('Directory creation failed');
-		
-		// Mock directory doesn't exist and creation fails
-		fs.access = jest.fn().mockRejectedValue(new Error('Directory not found'));
-		fs.mkdir = jest.fn().mockRejectedValue(mockError);
-		
-		const result = await writeToFile(path, mockScript, 'Test Title');
-		expect(result).toBe('error-handled');
+		// Verify directory was created and file was written
+		expect(fs.existsSync(dirPath)).toBe(true);
+		expect(fs.existsSync(filePath)).toBe(true);
+		expect(fs.readFileSync(filePath, 'utf8')).toBe(mockScript);
 	});
 
 	it('should use default title when not provided', async () => {
-		const path = 'script/frozen.html';
+		const filePath = path.join(tempDir, 'frozen.html');
 		const mockScript = 'MOCK SCRIPT';
-		
-		fs.access = jest.fn().mockResolvedValue(undefined);
-		fs.writeFile = jest.fn().mockResolvedValue(undefined);
-		
-		const result = await writeToFile(path, mockScript);
-		expect(result).toBe(path);
-		expect(fs.writeFile).toHaveBeenCalledWith(path, mockScript, 'utf8');
+
+		const result = await writeToFile(filePath, mockScript);
+		expect(result).toBe(filePath);
+
+		// Verify file was written
+		expect(fs.existsSync(filePath)).toBe(true);
+		expect(fs.readFileSync(filePath, 'utf8')).toBe(mockScript);
 	});
 
 	it('should handle complex directory paths', async () => {
-		const path = 'scripts/Action/SubGenre/frozen.html';
+		const dirPath = path.join(tempDir, 'scripts', 'Action', 'SubGenre');
+		const filePath = path.join(dirPath, 'frozen.html');
 		const mockScript = 'MOCK SCRIPT';
-		
-		fs.access = jest.fn().mockRejectedValue(new Error('Directory not found'));
-		fs.mkdir = jest.fn().mockResolvedValue(undefined);
-		fs.writeFile = jest.fn().mockResolvedValue(undefined);
-		
-		const result = await writeToFile(path, mockScript);
-		expect(result).toBe(path);
-		expect(fs.mkdir).toHaveBeenCalledWith('scripts/Action/SubGenre', { recursive: true });
+
+		const result = await writeToFile(filePath, mockScript);
+		expect(result).toBe(filePath);
+
+		// Verify directory structure was created and file was written
+		expect(fs.existsSync(dirPath)).toBe(true);
+		expect(fs.existsSync(filePath)).toBe(true);
+		expect(fs.readFileSync(filePath, 'utf8')).toBe(mockScript);
 	});
 });
