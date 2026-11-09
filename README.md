@@ -4,10 +4,9 @@
 [![npm version](https://badge.fury.io/js/movie-script-scraper.svg)](https://www.npmjs.com/package/movie-script-scraper)
 [![License: MIT](https://img.shields.io/github/license/JoeKarlsson/movie-script-scraper.svg)](LICENSE)
 
-Movie Script Scraper downloads movie scripts by genre from IMSDB and saves each
-one as a plain text file you can search and count. Bechdel.io needed a lot of
-scripts to check against the Bechdel Test, and this is where they came from. Tim
-Kendall started it in 2014, and I rewrote it and put it on npm in 2018.
+Movie Script Scraper downloads movie scripts by genre from the Internet Movie
+Script Database and saves each one as a plain text file you can search and
+count. It's where Bechdel.io got its scripts.
 
 [Read the full statement](https://www.joekarlsson.com/work/movie-script-scraper/)
 
