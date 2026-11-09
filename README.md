@@ -28,6 +28,12 @@
 
 A high-performance scraper to retrieve movie scripts by genre from [IMSDB](http://www.imsdb.com/).
 
+## Artist statement
+
+To check movies against the Bechdel Test, Bechdel.io needed a lot of movie scripts as plain text. The Internet Movie Script Database has plenty of them, but one web page at a time, laid out for people to read. Movie Script Scraper turns that into files.
+
+[Read the full statement](https://www.joekarlsson.com/work/movie-script-scraper/).
+
 ## Features
 
 - 🎬 **Genre-based scraping** - Download multiple scripts from any movie genre
