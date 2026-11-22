@@ -94,7 +94,7 @@ const extractPageContents = (html, url) => {
 		// Extract title from URL like /scripts/Predator.html
 		const urlMatch = url.match(/\/scripts\/([^/]+)\.html$/);
 		if (urlMatch) {
-			cleanTitle = urlMatch[1].toLowerCase().replace(/-/g, '-');
+			cleanTitle = urlMatch[1].toLowerCase();
 		}
 	}
 
@@ -142,7 +142,7 @@ const extractLargeContent = (html, url) => {
 	if (url) {
 		const urlMatch = url.match(/\/scripts\/([^/]+)\.html$/);
 		if (urlMatch) {
-			cleanTitle = urlMatch[1].toLowerCase().replace(/-/g, '-');
+			cleanTitle = urlMatch[1].toLowerCase();
 		}
 	}
 
