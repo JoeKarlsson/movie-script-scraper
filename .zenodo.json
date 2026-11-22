@@ -1,0 +1,24 @@
+{
+	"title": "Movie Script Scraper",
+	"description": "A Node.js scraper that downloads movie scripts from IMSDb by genre or title.",
+	"upload_type": "software",
+	"creators": [
+		{
+			"name": "Karlsson, Joe"
+		}
+	],
+	"license": "MIT",
+	"keywords": [
+		"web scraping",
+		"movie scripts",
+		"IMSDb",
+		"dataset"
+	],
+	"related_identifiers": [
+		{
+			"identifier": "10.18653/v1/2020.coling-main.20",
+			"relation": "isCitedBy",
+			"resource_type": "publication-conferencepaper"
+		}
+	]
+}
