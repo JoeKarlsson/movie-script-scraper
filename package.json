@@ -87,6 +87,11 @@
     "glob": "^14.0.6",
     "rimraf": "^5.0.0",
     "inflight": "npm:noop2@^1.0.0",
-    "minimatch@>=7.0.0 <11.0.1": "^11.0.9"
+    "test-exclude": {
+      "minimatch": "^11.0.9"
+    },
+    "c8": {
+      "minimatch": "^11.0.9"
+    }
   }
 }
