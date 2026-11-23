@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
+doi: 10.5281/zenodo.24451278
 title: "Movie Script Scraper"
 abstract: "A Node.js scraper that downloads movie scripts from IMSDb by genre or title."
 authors:

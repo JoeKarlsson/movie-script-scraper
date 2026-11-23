@@ -3,6 +3,7 @@
 [![CI](https://github.com/JoeKarlsson/movie-script-scraper/actions/workflows/ci.yml/badge.svg)](https://github.com/JoeKarlsson/movie-script-scraper/actions/workflows/ci.yml)
 [![npm version](https://badge.fury.io/js/movie-script-scraper.svg)](https://www.npmjs.com/package/movie-script-scraper)
 [![License: MIT](https://img.shields.io/github/license/JoeKarlsson/movie-script-scraper.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24451278.svg)](https://doi.org/10.5281/zenodo.24451278)
 
 Movie Script Scraper downloads movie scripts by genre from the Internet Movie
 Script Database and saves each one as a plain text file you can search and
